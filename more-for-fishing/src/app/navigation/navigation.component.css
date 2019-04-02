@@ -1,8 +1,10 @@
+ 
+  /* Style the navbar links */
   nav a {
-    float: left;
+    float: right;
     display: block;
     color: white;
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 10px;
     text-decoration: none;
   }
