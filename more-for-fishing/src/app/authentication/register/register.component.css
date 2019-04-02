@@ -1,5 +1,8 @@
-h1 { 
-  text-align: center 
+h1 {
+  text-align: center;
+  margin: 20px auto;
+  color: #721c24;
+  font-weight: bold;
 }
 
 input.ng-valid {
@@ -11,5 +14,14 @@ input.ng-invalid.ng-touched {
 }
 
 .container{
-  background-color: #ADD8E6;
+  background-color: #e9ecef;
+}
+
+.alert-danger {
+  background-color: brown;
+  color: #fff;
+}
+
+button {
+  cursor: not-allowed;
 }

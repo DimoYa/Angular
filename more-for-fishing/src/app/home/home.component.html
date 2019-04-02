@@ -1,0 +1,32 @@
+<app-navigation></app-navigation>
+
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Find an arcticle</h1>
+      <p>Search for an article using the form below:</p>
+      <form #form="ngForm" (ngSubmit)="search(form.value)">
+        <input type="text" class="form-control" name="search" ngModel>
+        <button type="sumbit" name="submitButton" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </div>
+  <div [hidden]="form.value.search != ''" class="artickles">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Latest fishing Articles</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <!-- <div class="col-lg-2" *ngFor="let movie of popularMovies"> -->
+          <!-- <app-movie [movie]="movie"></app-movie> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</main>
+
+<footer class="container">
+  <p>© MovieDB</p>
+</footer>

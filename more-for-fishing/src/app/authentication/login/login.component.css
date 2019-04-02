@@ -1,17 +1,27 @@
-h1 { 
-    text-align: center 
+h1 {
+  text-align: center;
+  margin: 20px auto;
+  color: #721c24;
+  font-weight: bold;
 }
 
 input.ng-valid {
-    border-left: 5px solid #42A948; /* green */
-  }
-  
-  input.ng-invalid.ng-touched {
-    border-left: 5px solid #A94442; /* red */
-  }
-
-  .container{
-    background-color: #ADD8E6;
+  border-left: 5px solid #42A948; /* green */
 }
 
+input.ng-invalid.ng-touched {
+  border-left: 5px solid #A94442; /* red */
+}
 
+.container{
+  background-color: #e9ecef;
+}
+
+.alert-danger {
+  background-color: brown;
+  color: #fff;
+}
+
+button {
+  cursor: not-allowed;
+}
