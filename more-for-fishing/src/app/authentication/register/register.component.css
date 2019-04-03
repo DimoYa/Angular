@@ -18,10 +18,11 @@ input.ng-invalid.ng-touched {
 }
 
 .alert-danger {
-  background-color: brown;
+  background-color: #bc204b;  
   color: #fff;
 }
 
 button {
   cursor: not-allowed;
 }
+
