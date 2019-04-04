@@ -1,0 +1,13 @@
+<div class="card mb-3">
+  <img style="height: 200px; width: 100%; display: block;" [src]="imagePath" alt="Card image">
+  <div class="card-body">
+    <p class="card-text">{{article.title}}
+    </p>
+    <h6>{{article.creationDate}}</h6>
+  </div>
+  <div class="card-footer text-muted">
+    <p>
+      <a class="btn btn-default" routerLink="{{article.id}}">Read</a>
+    </p>
+  </div>
+</div>

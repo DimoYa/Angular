@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './authentication/register/register.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './authentication/login/login.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { HomeComponent } from './components/home/home.component';
+import { ArticleComponent } from './components/articles/article/article.component';
+import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
+import { ArticleService } from './services/article.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,14 +20,19 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     LoginComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    ArticleComponent,
+    ArticleDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

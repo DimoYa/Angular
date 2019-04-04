@@ -7,11 +7,23 @@
       <p>Search for an article using the form below:</p>
       <form #form="ngForm" (ngSubmit)="search(form.value)">
         <input type="text" class="form-control" name="search" ngModel>
-        <button type="sumbit" name="submitButton" class="btn btn-primary">Search</button>
+        <button type="sumbit" name="submitButton" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Search</button>
       </form>
     </div>
   </div>
-  <div [hidden]="form.value.search != ''" class="artickles">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Articles</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2" *ngFor="let article of articles">
+          <app-article [article]="article"></app-article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="form.value.search != ''" class="articles">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Latest fishing Articles</h3>

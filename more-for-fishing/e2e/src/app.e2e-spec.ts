@@ -10,6 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
+    console.log('here');
     expect(page.getTitleText()).toEqual('Welcome to more-for-fishing!');
   });
 
