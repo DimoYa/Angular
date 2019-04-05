@@ -26,3 +26,6 @@ button {
   cursor: not-allowed;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}

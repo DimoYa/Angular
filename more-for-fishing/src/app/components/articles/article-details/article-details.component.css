@@ -1,0 +1,52 @@
+
+body {
+    font-size: 18px;
+    font-family: "Open Sans", Arial, sans-serif;
+    color: #292b33;
+}
+
+h1, h2 {
+    font-family: 'Fjalla One', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 52px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    margin: 1em 0 0 0;
+}
+
+p {
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+}
+
+blockquote {
+    border-left: none;
+    position: relative;
+}
+
+blockquote::before {
+    content: '“';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 48px;
+    font-family: "inherit";
+    font-weight: bold;
+}
+
+blockquote p {
+    margin: 0 0 10px 20px;
+    font-style: italic;
+    font-family: "Georgia";
+}
+
+em {
+    font-family: Georgia, serif;
+    font-size: 1.1em;
+}
+
+.lead {
+    margin-top: 0.25em;
+}
+
