@@ -30,7 +30,7 @@ export class NavigationComponent {
   }
 
   username(): string {
-    return this.authenticationService.user;
+    return this.authenticationService.returnUserName();
   }
 
   checkIfItIsCurrentUrl(currToCheck: string) : boolean {

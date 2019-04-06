@@ -5,17 +5,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="!isAuth()" class="nav-item" routerLink="/home">
-        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/home')"><i class="fa fa-fw fa-home"></i> Home</a>
+      <li  class="nav-item" routerLink="/home">
+        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/home') && isAuth()"><i class="fa fa-fw fa-home"></i> Home</a>
       </li>
-      <li *ngIf="!isAuth()" class="nav-item" routerLink="/login">
-        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/login')"><i class="fa fa-fw fa-user"></i>Login</a>
+      <li class="nav-item" routerLink="/login">
+        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/login') && !isAuth()"><i class="fa fa-fw fa-user"></i>Login</a>
       </li>
       <li *ngIf="!isAuth()" class="nav-item" routerLink="/register">
-        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/register')"><i class="fa fa-fw fa-user"></i>Register</a>
+        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/register') && !isAuth()"><i class="fa fa-fw fa-user"></i>Register</a>
       </li>
       <li *ngIf="isAuth()" class="nav-item">
-        <a class="nav-link" (click)="logout()">
+        <a class="navbar-brand" (click)="logout()">
           <span>Welcome, {{username()}}</span> - Logout</a>
       </li>
     </ul>

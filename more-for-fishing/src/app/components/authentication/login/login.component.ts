@@ -30,19 +30,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.model)
       .subscribe(data => {
-        this.successfulLogin(data);
+        console.log(data);
       }, err => {
-        this.loginMsg = err;
+        this.loginMsg = err.error['description'];
       });
     this.htmlForm.reset();
   };
 
-  successfulLogin(data): void {
-    this.authService.authtoken = data['_kmd']['authtoken'];
-    this.authService.user = data['username'];
-    localStorage.setItem('authtoken', data['_kmd']['authtoken']);
-    localStorage.setItem('username', data['username']);
-    this.loginFail = false;
-    this.router.navigate(['/home']);
-  }
 }

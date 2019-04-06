@@ -13,6 +13,8 @@ import { ArticleDetailsComponent } from './components/articles/article-details/a
 import { ArticleService } from './services/article.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -33,7 +35,13 @@ import { AuthenticationService } from './services/authentication.service';
   ],
   providers: [
     ArticleService,
-    AuthenticationService
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+
   ],
   bootstrap: [AppComponent]
 })
