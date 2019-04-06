@@ -12,6 +12,7 @@ import { ArticleComponent } from './components/articles/article/article.componen
 import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
 import { ArticleService } from './services/article.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    ArticleService
+    ArticleService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

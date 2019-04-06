@@ -5,17 +5,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLink="/home">
+      <li *ngIf="!isAuth()" class="nav-item" routerLink="/home">
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/home')"><i class="fa fa-fw fa-home"></i> Home</a>
       </li>
-      <li class="nav-item" routerLink="/login">
+      <li *ngIf="!isAuth()" class="nav-item" routerLink="/login">
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/login')"><i class="fa fa-fw fa-user"></i>Login</a>
       </li>
-      <li class="nav-item" routerLink="/register">
+      <li *ngIf="!isAuth()" class="nav-item" routerLink="/register">
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/register')"><i class="fa fa-fw fa-user"></i>Register</a>
       </li>
       <li *ngIf="isAuth()" class="nav-item">
-        <a class="nav-link" (click)="logout()" routerLink="/home">
+        <a class="nav-link" (click)="logout()">
           <span>Welcome, {{username()}}</span> - Logout</a>
       </li>
     </ul>

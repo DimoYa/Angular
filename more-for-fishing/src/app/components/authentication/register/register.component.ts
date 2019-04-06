@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { RegisterModel } from 'src/app/models/register';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,17 +12,30 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   getNumbers = ['359', '124', '152'];
-  jobTitles = ['Developer', 'QA', 'Designer'];
+  model: RegisterModel;
+  registerMsg: string;
 
   @ViewChild('form')
   htmlForm: NgForm;
-  constructor() { }
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router) {
+
+    this.model = new RegisterModel('', '', '', '', '', '', '');
+
+  }
 
   ngOnInit() {
   }
 
-  register(formData) {
+  register() {
+    delete this.model['confirmPassword'];
+    this.authService.register(this.model)
+    .subscribe(res => {
+      this.router.navigate(['/login']);
+    }, err => {
+      this.registerMsg = err;
+    });
     this.htmlForm.reset();
-    console.log(formData);
   };
 }

@@ -10,26 +10,28 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class NavigationComponent {
   error: string;
 
-  constructor(private router: Router ) {}
-  // constructor(private authenticationService: AuthenticationService) { }
+  constructor(private router: Router,
+    private authenticationService: AuthenticationService) { }
 
-  // logout(): void {
-  //   this.authenticationService
-  //     .logout()
-  //     .subscribe(res => {
+  logout(): void {
+    this.authenticationService
+      .logout()
+      .subscribe(res => {
+        localStorage.clear();
+        this.authenticationService.currentAuthtoken = '';
+        this.router.navigate(['/login']);
+      }, err => {
+        this.error = err;
+      });
+  }
 
-  //     }, err => {
-  //       this.error = err;
-  //     });
-  // }
+  isAuth(): boolean {
+    return this.authenticationService.isLoggedIn();
+  }
 
-  // isAuth(): boolean {
-  //   return this.authenticationService.isLogged();
-  // }
-
-  // username(): string {
-  //   return this.authenticationService.getUsername();
-  // }
+  username(): string {
+    return this.authenticationService.user;
+  }
 
   checkIfItIsCurrentUrl(currToCheck: string) : boolean {
 

@@ -6,26 +6,24 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
         <h1>Login</h1>
-        <form #form="ngForm" (submit)="login(form)">
+        <form #form="ngForm" (submit)="login()">
           <div class="form-group input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-            <input name="email" pattern="\S+@\S+" class="form-control" placeholder="Type your email address"
-              type="email" required ngModel>
+            <input name="username" class="form-control" placeholder="User Name*" required name="username"
+              [(ngModel)]="model.username" #username="ngModel">
           </div>
-          <div class="alert alert-danger" *ngIf="form.controls.email?.touched && form.controls.email.errors?.required">
+          <div class="alert alert-danger"
+            *ngIf="form.controls.username?.touched && form.controls.username.errors?.required">
             The field is required!
-          </div>
-          <div class="alert alert-danger" *ngIf="form.controls.email?.errors?.pattern">
-            Invalid email!
           </div>
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
             <input name="password" pattern="[A-Za-z0-9]{3,16}" class="form-control" placeholder="Type your password"
-              type="password" required ngModel>
+              type="password" required [(ngModel)]="model.password" #password="ngModel">
           </div>
           <div class="alert alert-danger"
             *ngIf="form.controls.password?.touched && form.controls.password.errors?.required">
@@ -34,6 +32,7 @@
           <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid"> Log In </button>
           </div>
+          <div>{{loginMsg}}</div>
           <p>Don't have an account? <a routerLink="/register">register here</a></p>
         </form>
         <div class="col-lg-4"></div>
