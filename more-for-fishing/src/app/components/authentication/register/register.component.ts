@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { RegisterModel } from 'src/app/core/models/register';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,28 +10,38 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  getNumbers = ['359', '124', '152'];
-  model: RegisterModel;
-
   @ViewChild('form')
-  htmlForm: NgForm;
+  form: FormGroup;
+  getNumbers = ['359', '124', '152'];
+
   constructor(
     private authService: AuthenticationService,
-    private router: Router) {
-
-    this.model = new RegisterModel('', '', '', '', '', '', '');
-
+    private router: Router,
+    private fb: FormBuilder) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      fullname: ['', [Validators.required, Validators.pattern(/[A-Z][a-z]+\s[A-z][a-z]+/)]],
+      email: ['', [Validators.required, Validators.pattern(/\S+@\S+/)]],
+      phoneNumber:[ '', Validators.pattern(/\d{9}/)],
+      password: ['', [Validators.required, Validators.pattern(/[A-Za-z0-9]{3,16}/)]],
+      confirmPassword: ['', Validators.required],
+      photo: ['', Validators.nullValidator]
+    });
   }
 
   register() {
-    delete this.model['confirmPassword'];
-    this.authService.register(this.model)
+    delete this.form.value['confirmPassword'];
+    this.authService.register(this.form.value)
     .subscribe(res => {
       this.router.navigate(['/login']);
     });
-    this.htmlForm.reset();
+    this.form.reset();
+  };
+
+  get f() {
+    return this.form.controls;
   };
 }

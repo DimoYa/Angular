@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { LoginModel } from '../models/login';
-import { RegisterModel } from '../models/register';
 import { UpdateModel } from '../models/updateUser';
 
 const appKey = 'kid_rJyhiXLYV';
@@ -22,16 +19,12 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  login(loginModel: LoginModel) {
-    return this.http.post(
-      loginUrl,
-      JSON.stringify(loginModel));
+  login(loginModel) {
+    return this.http.post(loginUrl, loginModel);
   }
 
-  register(registerModel: RegisterModel): Observable<Object> {
-    return this.http.post(
-      registerUrl,
-      JSON.stringify(registerModel));
+  register(registerModel) {
+    return this.http.post(registerUrl, registerModel);
   }
 
   logout() {
@@ -48,7 +41,7 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    return  localStorage.getItem('authtoken') !== null;
+    return localStorage.getItem('authtoken') !== null;
   }
 
   get authtoken() {

@@ -2,8 +2,8 @@
   <div class="container">
     <h1>Find an arcticle</h1>
     <p>Search for an article using the form below:</p>
-    <form #form="ngForm" (ngSubmit)="search(form.value)">
-      <input type="text" class="form-control" name="search" ngModel>
+    <form [formGroup]="form" (ngSubmit)="search(form.value)">
+      <input type="text" class="form-control" formControlName="search">
       <button type="sumbit" name="submitButton" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Search</button>
     </form>
   </div>

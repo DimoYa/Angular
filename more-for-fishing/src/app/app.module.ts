@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
 import { HomeComponent } from './components/shared/home/home.component';
@@ -34,7 +34,7 @@ import { HandlerInterceptorService } from './core/interceptors/responseHandler.i
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot()
   ],

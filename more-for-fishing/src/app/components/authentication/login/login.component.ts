@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { LoginModel } from 'src/app/core/models/login';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Router } from '@angular/router';
 
@@ -11,22 +10,24 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  model: LoginModel;
-
   @ViewChild('form')
-  htmlForm: NgForm;
+  form: FormGroup;
   constructor(
     private authService: AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    private fb: FormBuilder) {
 
-    this.model = new LoginModel('', '');
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
   login() {
-    this.authService.login(this.model)
+    this.authService.login(this.form.value)
     .subscribe((data) => {
       this.authService.authtoken = data['_kmd']['authtoken'];
           this.authService.user = data['username'];
@@ -34,6 +35,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('username', data['username']);
           this.router.navigate(['/home']);
       });
-    this.htmlForm.reset();
+    this.form.reset();
+  };
+
+  get f() {
+    return this.form.controls;
   };
 }
