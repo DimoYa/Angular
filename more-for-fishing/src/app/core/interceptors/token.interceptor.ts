@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators'
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 
@@ -41,34 +40,5 @@ export class TokenInterceptor implements HttpInterceptor {
             })
         }
         return next.handle(request)
-            .pipe(tap((event: HttpEvent<any>) => {
-                if (event instanceof HttpResponse
-                    && request.url.endsWith('login')) {
-                    this.successfulLogin(event['body']);
-                }
-            }, (err: any) => {
-                switch (err.status) {
-                    case 401:
-                        this.router.navigate(['/login']);
-                        break;
-                    case 404:
-                        this.router.navigate(['/not-found']);
-                        break;
-                    case 500:
-                        this.router.navigate(['/server-error']);
-                        break;
-                }
-            }
-            ));
-
     }
-
-    successfulLogin(data): void {
-        this.authService.authtoken = data['_kmd']['authtoken'];
-        this.authService.user = data['username'];
-        localStorage.setItem('authtoken', data['_kmd']['authtoken']);
-        localStorage.setItem('username', data['username']);
-        this.router.navigate(['/home']);
-    }
-
 }

@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './core/services/authentication.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
 
 
 @NgModule({
@@ -29,9 +32,11 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     ArticleService,
@@ -39,6 +44,11 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HandlerInterceptorService,
       multi: true
     }
 

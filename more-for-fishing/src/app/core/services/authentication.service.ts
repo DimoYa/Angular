@@ -6,7 +6,6 @@ import { RegisterModel } from '../models/register';
 import { UpdateModel } from '../models/updateUser';
 
 const appKey = 'kid_rJyhiXLYV';
-const appSecret = '21b5781390524ab5900561984ee6b2c9';
 const registerUrl = `https://baas.kinvey.com/user/${appKey}`;
 const loginUrl = `https://baas.kinvey.com/user/${appKey}/login`;
 const logoutUrl = `https://baas.kinvey.com/user/${appKey}/_logout`;

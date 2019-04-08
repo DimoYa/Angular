@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.model)
-      .subscribe(data => {
-        console.log(data);
-      }, err => {
-        this.loginMsg = err.error['description'];
+    .subscribe((data) => {
+      this.authService.authtoken = data['_kmd']['authtoken'];
+          this.authService.user = data['username'];
+          localStorage.setItem('authtoken', data['_kmd']['authtoken']);
+          localStorage.setItem('username', data['username']);
+          this.router.navigate(['/home']);
       });
     this.htmlForm.reset();
   };
-
 }
