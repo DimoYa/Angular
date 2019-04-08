@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   model: LoginModel;
-  loginMsg: string;
-  loginFail: boolean;
 
   @ViewChild('form')
   htmlForm: NgForm;

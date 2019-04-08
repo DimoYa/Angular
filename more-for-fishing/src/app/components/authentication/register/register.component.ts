@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
 
   getNumbers = ['359', '124', '152'];
   model: RegisterModel;
-  registerMsg: string;
 
   @ViewChild('form')
   htmlForm: NgForm;
@@ -33,8 +32,6 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.model)
     .subscribe(res => {
       this.router.navigate(['/login']);
-    }, err => {
-      this.registerMsg = err;
     });
     this.htmlForm.reset();
   };
