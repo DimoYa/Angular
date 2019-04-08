@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/authentication/login/login.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { HomeComponent } from './components/home/home.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
+import { HomeComponent } from './components/shared/home/home.component';
 import { ArticleComponent } from './components/articles/article/article.component';
 import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
-import { ArticleService } from './services/article.service';
+import { ArticleService } from './core/services/article.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './core/services/authentication.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { TokenInterceptor } from './interceptors/token.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 
 @NgModule({

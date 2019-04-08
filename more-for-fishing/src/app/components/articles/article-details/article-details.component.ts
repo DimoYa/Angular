@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import ArticleDetails from 'src/app/models/article-details';
+import ArticleDetails from 'src/app/core/models/article-details';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from 'src/app/services/article.service';
-import Article from 'src/app/models/article';
+import { ArticleService } from 'src/app/core/services/article.service';
+import Article from 'src/app/core/models/article';
 
 
 @Component({
