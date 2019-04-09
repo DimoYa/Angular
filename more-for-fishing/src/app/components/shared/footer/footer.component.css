@@ -1,9 +1,8 @@
- nav a {
-    float: right;
+footer a {
+    float: center;
     display: block;
     color: white;
     text-align: center;
     padding: 10px;
-    margin: auto;
     text-decoration: none;
 }

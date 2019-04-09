@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ArticleDetails from 'src/app/core/models/article-details';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/core/services/article.service';
-import Article from 'src/app/core/models/article';
+import Article from 'src/app/core/models/article-model';
 
 
 @Component({

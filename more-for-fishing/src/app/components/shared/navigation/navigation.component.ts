@@ -21,8 +21,6 @@ export class NavigationComponent {
         localStorage.clear();
         this.authenticationService.currentAuthtoken = '';
         this.router.navigate(['/login']);
-      }, err => {
-        this.error = err;
       });
   }
 
@@ -34,7 +32,7 @@ export class NavigationComponent {
     return this.authenticationService.returnUserName();
   }
 
-  checkIfItIsCurrentUrl(currToCheck: string) : boolean {
+  checkIfItIsCurrentUrl(currToCheck: string): boolean {
 
     return this.router.url === currToCheck;
   }

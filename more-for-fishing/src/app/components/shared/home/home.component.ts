@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Article from 'src/app//core/models/article';
+import Article from 'src/app//core/models/article-details';
 import { ArticleService } from 'src/app/core/services/article.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

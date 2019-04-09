@@ -18,6 +18,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HandlerInterceptorService } from './core/interceptors/responseHandler.i
     NavigationComponent,
     HomeComponent,
     ArticleComponent,
-    ArticleDetailsComponent
+    ArticleDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

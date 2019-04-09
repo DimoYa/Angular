@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { UpdateModel } from '../models/updateUser';
 
 const appKey = 'kid_rJyhiXLYV';
 const registerUrl = `https://baas.kinvey.com/user/${appKey}`;
@@ -32,13 +31,13 @@ export class AuthenticationService {
       logoutUrl, {});
   }
 
-  update(model: UpdateModel) {
-    let userId = localStorage.getItem('userId');
-    let updateUrl = `https://baas.kinvey.com/user/${appKey}/${userId}`;
-    return this.http.put(
-      updateUrl,
-      JSON.stringify(model));
-  }
+  // update(id) {
+  //   let userId = localStorage.getItem('userId');
+  //   let updateUrl = `https://baas.kinvey.com/user/${appKey}/${id}`;
+  //   return this.http.put(
+  //     updateUrl,
+  //     JSON.stringify(model));
+  // }
 
   isLoggedIn() {
     return localStorage.getItem('authtoken') !== null;
