@@ -1,35 +1,32 @@
-<main>
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <h1>Login</h1>
-        <form [formGroup]="form" (submit)="login()">
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-            </div>
-            <input class="form-control" formControlName="username" placeholder="User Name">
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <h1>Login</h1>
+      <form [formGroup]="form" (submit)="login()">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
           </div>
-          <div class="alert alert-danger" *ngIf="f.username?.touched && f.username.errors?.required">
-            This field is required!
+          <input class="form-control" formControlName="username" placeholder="User Name">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.username?.touched && f.username.errors?.required">
+          This field is required!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
           </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" formControlName="password" placeholder="Enter your password" type="password">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.password?.touched && f.password?.errors?.required">
-            The field is required!
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid"> Log In </button>
-          </div>
-          <p>Don't have an account? <a routerLink="/register">register here</a></p>
-        </form>
-        <div class="col-lg-4"></div>
-      </div>
+          <input class="form-control" formControlName="password" placeholder="Enter your password" type="password">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.password?.touched && f.password?.errors?.required">
+          The field is required!
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid"> Log In </button>
+        </div>
+        <p>Don't have an account? <a routerLink="/register">register here</a></p>
+      </form>
     </div>
   </div>
-</main>
+</div>

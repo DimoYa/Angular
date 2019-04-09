@@ -1,96 +1,91 @@
-<app-navigation></app-navigation>
-<main>
-  <div class="jumbotron">
-    <div>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <h1>Register</h1>
+      <form [formGroup]="form" (submit)="register()">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input class="form-control" formControlName="username" placeholder="User Name">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.username?.touched && f.username.errors?.required">
+          This field is required!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input class="form-control" formControlName="fullname" placeholder="Full Name">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.fullname?.touched && f.fullname.errors?.required">
+          This field is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="f.fullname?.errors?.pattern">
+          The full name input field must contain two names (letters only) separated by a space!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+          <input class="form-control" formControlName="email" placeholder="Email Address" type="email">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.email?.touched && f.email.errors?.required">
+          The field is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="f.email?.errors?.pattern">
+          Invalid email!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+          </div>
+          <select class="custom-select" style="max-width: 120px;">
+            <option value="{{number}}" *ngFor="let number of getNumbers">{{number}}</option>
+          </select>
+          <input class="form-control" formControlName="phoneNumber" placeholder="Phone number" type="text">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.phoneNumber?.errors?.pattern">
+          Invalid phone number!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" formControlName="password" placeholder="Create password" type="password">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.password?.touched && f.password?.errors?.required">
+          The field is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="f.password?.errors?.pattern">
+          The password input field must be between 3 and 16 symbols and must contain only letters and digits.
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" formControlName="confirmPassword" placeholder="Repeat password" type="password">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.confirmPassword?.touched && f.confirmPassword?.errors?.required">
+          The field is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="f.confirmPassword.value !== f.password.value">
+          Passwords should match!
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-image"></i> </span>
+            <input name="photo" placeholder="image" formControlName="photo" type="file">
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || f.confirmPassword.value !== f.password.value">
+            Create Account </button>
+        </div>
+        <p class="text-center">Have an account? <a routerLink="/login">Log In</a> </p>
+      </form>
     </div>
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <h1>Register</h1>
-        <form [formGroup]="form" (submit)="register()">
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-            </div>
-            <input class="form-control" formControlName="username" placeholder="User Name">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.username?.touched && f.username.errors?.required">
-            This field is required!
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-            </div>
-            <input class="form-control" formControlName="fullname" placeholder="Full Name">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.fullname?.touched && f.fullname.errors?.required">
-            This field is required!
-          </div>
-          <div class="alert alert-danger" *ngIf="f.fullname?.errors?.pattern">
-            The full name input field must contain two names (letters only) separated by a space!
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-            </div>
-            <input class="form-control" formControlName="email" placeholder="Email Address" type="email">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.email?.touched && f.email.errors?.required">
-            The field is required!
-          </div>
-          <div class="alert alert-danger" *ngIf="f.email?.errors?.pattern">
-            Invalid email!
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-            </div>
-            <select class="custom-select" style="max-width: 120px;">
-              <option value="{{number}}" *ngFor="let number of getNumbers">{{number}}</option>
-            </select>
-            <input class="form-control" formControlName="phoneNumber" placeholder="Phone number" type="text">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.phoneNumber?.errors?.pattern">
-            Invalid phone number!
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" formControlName="password" placeholder="Create password" type="password">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.password?.touched && f.password?.errors?.required">
-            The field is required!
-          </div>
-          <div class="alert alert-danger" *ngIf="f.password?.errors?.pattern">
-            The password input field must be between 3 and 16 symbols and must contain only letters and digits.
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" formControlName="confirmPassword" placeholder="Repeat password" type="password">
-          </div>
-          <div class="alert alert-danger" *ngIf="f.confirmPassword?.touched && f.confirmPassword?.errors?.required">
-            The field is required!
-          </div>
-          <div class="alert alert-danger" *ngIf="f.confirmPassword.value !== f.password.value">
-            Passwords should match!
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-image"></i> </span>
-              <input name="photo" placeholder="image" formControlName="photo" type="file">
-            </div>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"
-              [disabled]="form.invalid || f.confirmPassword.value !== f.password.value"> Create Account </button>
-          </div>
-          <p class="text-center">Have an account? <a routerLink="/login">Log In</a> </p>
-        </form>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
+    <div class="col-lg-4"></div>
   </div>
-</main>
+</div>
