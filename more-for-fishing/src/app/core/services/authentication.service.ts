@@ -13,6 +13,7 @@ export class AuthenticationService {
 
   currentAuthtoken: string;
   currentUser: string;
+  currentId: string;
 
   constructor(
     private http: HttpClient
@@ -62,11 +63,36 @@ export class AuthenticationService {
     return localStorage.getItem('username');
   }
 
+  returnId(): string {
+
+    return localStorage.getItem('id');
+  }
+
+  getUserData(profileId) {
+    return this.http.get(`https://baas.kinvey.com/user/${appKey}/${profileId}`);
+  }
+
+  getAllUsers() {
+    return this.http.get(`https://baas.kinvey.com/group/${appKey}`)
+  }
+
+  destroy(Id) {
+    return this.http.delete(`https://baas.kinvey.com/user/${appKey}/${Id}`);
+  }
+
   get user() {
     return this.currentUser;
   }
 
   set user(value: string) {
     this.currentUser = value;
+  }
+
+  get id() {
+    return this.currentId;
+  }
+
+  set id(value: string) {
+    this.currentId = value;
   }
 }

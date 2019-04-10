@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     HomeComponent,
     ArticleComponent,
     ArticleDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
