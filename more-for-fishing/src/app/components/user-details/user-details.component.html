@@ -1,27 +1,17 @@
-<!-- <img id="avatar" src="{{userData.avatarUrl}}" alt="avatar"> -->
-<p>Username: <span>{{userData['username']}}</span></p>
-<p><span>Full Name:</span>{{userData.fullname}}&nbsp;&nbsp;&nbsp;<span>Full Name:</span>{{userData['username']}}</p>
-
-<div *ngIf="authService.isAdmin()" class="container">
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#destoryModal">Destroy User</button>
-
-    <div class="modal fade" id="destoryModal" tabindex="-1" role="dialog" aria-labelledby="destoryModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="destoryModalLabel">Are you sure?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    This will destroy the user permanently!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" (click)="destroy()" data-dismiss="modal">DESTROY USER</button>
-                </div>
+<ng-template [ngIf]="userData">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <h1 class="panel-title">{{userData.username}}</h1>
+                <img class="thumbnail" src="//placeimg.com/650/250/arch">
+                <ul class="list-group">
+                    <li class="list-group-item">FullName: <span>{{userData.fullname}}</span></li>
+                    <li class="list-group-item">Email: <span> {{userData.email}}</span></li>
+                    <li class="list-group-item" *ngIf="userData.phonenumber">Phone number: <span>{{userData.phonenumber}}</span></li>
+                </ul>
+                <button type="button" class="btn btn-danger" (click)="destroy()">Delete my account</button>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

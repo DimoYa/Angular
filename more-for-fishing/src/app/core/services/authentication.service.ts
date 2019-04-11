@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import UserModel from '../models/user-model';
+import { Observable } from 'rxjs';
 
 const appKey = 'kid_rJyhiXLYV';
 const registerUrl = `https://baas.kinvey.com/user/${appKey}`;
@@ -32,13 +34,10 @@ export class AuthenticationService {
       logoutUrl, {});
   }
 
-  // update(id) {
-  //   let userId = localStorage.getItem('userId');
-  //   let updateUrl = `https://baas.kinvey.com/user/${appKey}/${id}`;
-  //   return this.http.put(
-  //     updateUrl,
-  //     JSON.stringify(model));
-  // }
+  update(id) {
+    let updateUrl = `https://baas.kinvey.com/user/${appKey}/${id}`;
+    return this.http.put<UserModel>(updateUrl, registerModel);
+  }
 
   isLoggedIn() {
     return localStorage.getItem('authtoken') !== null;
@@ -68,8 +67,8 @@ export class AuthenticationService {
     return localStorage.getItem('id');
   }
 
-  getUserData(profileId) {
-    return this.http.get(`https://baas.kinvey.com/user/${appKey}/${profileId}`);
+  getUserData(profileId): Observable<UserModel> {
+    return this.http.get<UserModel>(`https://baas.kinvey.com/user/${appKey}/${profileId}`);
   }
 
   getAllUsers() {

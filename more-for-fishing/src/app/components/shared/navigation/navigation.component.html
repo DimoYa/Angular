@@ -15,6 +15,9 @@
       <li class="nav-item" routerLink="/register">
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/register') && !isAuth()"><i class="fas fa-user-plus"></i>Register</a>
       </li>
+      <li class="nav-item" routerLink="/myProfile">
+          <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/myProfile') && isAuth()" ><i class="fas fa-user"></i>My Profile</a>
+        </li>
       <li class="nav-item">
         <a class="navbar-brand" *ngIf="isAuth()" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a>
       </li>

@@ -1,0 +1,27 @@
+h1 {
+    text-align: center;
+    margin: 20px auto;
+    color: #721c24;
+    font-weight: bold;
+  }
+
+  span {
+    text-align: right;
+    margin: 20px auto;
+    color: #721c24;
+    font-weight: bold;
+  }
+
+ul {
+    padding-top: 2em;
+    padding-bottom: 1em;
+    font-weight: bold;
+} 
+
+.jumbotron {
+    width: 100%;
+    margin: auto;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+}

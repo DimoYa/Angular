@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserDetailsComponent implements OnInit {
   id: string;
-  userData: Object;
+  userData: UserModel;
 
   constructor(
     private router: Router,
@@ -19,7 +19,7 @@ export class UserDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-     this.id = this.authService.returnId();
+    this.id = this.authService.returnId();
 
     this.authService.getUserData(this.id)
       .subscribe(data => {
@@ -31,10 +31,11 @@ export class UserDetailsComponent implements OnInit {
 
   destroy() {
     this.authService.destroy(this.userData['_id'])
-      .subscribe(
-        data => {
-          this.router.navigate(['/userDeleted'])
-        });
-
+    .subscribe(res => {
+      localStorage.clear();
+      this.authService.currentAuthtoken = '';
+      this.router.navigate(['/register']);
+    });
   }
+ 
 }
