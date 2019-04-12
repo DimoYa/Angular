@@ -1,9 +1,9 @@
 interface Article {
-    id: number,
-    picturePath: string, 
-    title: string, 
-    creationDate: string,
-    content: string
+    _id: string;
+    url: string;
+    header: string;
+    content: string;
+    imageUrl: string;
 }
 
 export default Article;

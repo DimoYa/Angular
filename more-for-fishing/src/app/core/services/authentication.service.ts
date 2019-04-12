@@ -2,41 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import UserModel from '../models/user-model';
 import { Observable } from 'rxjs';
-
-const appKey = 'kid_rJyhiXLYV';
-const registerUrl = `https://baas.kinvey.com/user/${appKey}`;
-const loginUrl = `https://baas.kinvey.com/user/${appKey}/login`;
-const logoutUrl = `https://baas.kinvey.com/user/${appKey}/_logout`;
+import { appKey } from '../../kinvey.tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  private readonly baseUrl = `https://baas.kinvey.com/user/${appKey}`;
+  private readonly retrieveUsersUrl = `https://baas.kinvey.com/group/${appKey}`;
+
   currentAuthtoken: string;
-  currentUser: string;
-  currentId: string;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  login(loginModel) {
-    return this.http.post(loginUrl, loginModel);
+  login(usrModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.baseUrl}/login`, usrModel);
   }
 
-  register(registerModel) {
-    return this.http.post(registerUrl, registerModel);
+  register(usrModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.baseUrl}`, usrModel);
   }
 
   logout() {
-    return this.http.post(
-      logoutUrl, {});
-  }
-
-  update(id) {
-    let updateUrl = `https://baas.kinvey.com/user/${appKey}/${id}`;
-    return this.http.put<UserModel>(updateUrl, registerModel);
+    return this.http.post(`${this.baseUrl}/_logout`, {});
   }
 
   isLoggedIn() {
@@ -68,30 +59,14 @@ export class AuthenticationService {
   }
 
   getUserData(profileId): Observable<UserModel> {
-    return this.http.get<UserModel>(`https://baas.kinvey.com/user/${appKey}/${profileId}`);
+    return this.http.get<UserModel>(`${this.baseUrl}/${profileId}`);
   }
 
   getAllUsers() {
-    return this.http.get(`https://baas.kinvey.com/group/${appKey}`)
+    return this.http.get(``)
   }
 
   destroy(Id) {
-    return this.http.delete(`https://baas.kinvey.com/user/${appKey}/${Id}`);
-  }
-
-  get user() {
-    return this.currentUser;
-  }
-
-  set user(value: string) {
-    this.currentUser = value;
-  }
-
-  get id() {
-    return this.currentId;
-  }
-
-  set id(value: string) {
-    this.currentId = value;
+    return this.http.delete(`${this.baseUrl}/${Id}`);
   }
 }

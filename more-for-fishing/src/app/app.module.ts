@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
+import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     ArticleComponent,
     ArticleDetailsComponent,
     FooterComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    CreateArticleComponent,
+    ArticleUserComponent
   ],
   imports: [
     BrowserModule,

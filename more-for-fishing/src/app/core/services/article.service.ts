@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { appKey } from 'src/app/kinvey.tokens';
+import Article from '../models/article-model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,27 +10,23 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
+  private readonly BASE_URL = `https://baas.kinvey.com/appdata/${appKey}`;
+  private readonly ALL_Articles = `${this.BASE_URL}/article?query={}&sort={"_kmd.ect": -1}`;
+  private readonly CREATE_POST = `${this.BASE_URL}/article`;
+
+  createArticle(body: Object) {
+    return this.http.post(this.CREATE_POST, body);
+  }
+
   getArticles()  {
-    return [
-      {
-        id: 1,
-        picturePath: 'test', 
-        title: 'Test', 
-        creationDate: '2012-12-12',
-        content: 'dsadasdasdasdas',
-        comments: ['test', 'test2']
-       },
-       {
-        id: 2,
-        picturePath: 'test2', 
-        title: 'Test2', 
-        creationDate: '2012-12-12',
-        content: 'This is a wider card with supporting text below as a natural lead-in to additional content. This is a wider card with supporting text below as a natural lead-in to additional content. ',
-        comments: ['test', 'test2']
-       }];
+    return this.http.get<Article[]>(this.ALL_Articles);
   }
 
   getArticleById(id: string) {
-    return this.getArticles().find(i => i.id === Number(id));
+    return this.http.get<Article>(this.CREATE_POST + `/${id}`);
+  }
+
+  deleteArticle(id: string) {
+    return this.http.delete(this.CREATE_POST + `/${id}`);
   }
 }

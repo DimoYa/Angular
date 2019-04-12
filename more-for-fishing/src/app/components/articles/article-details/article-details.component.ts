@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import ArticleDetails from 'src/app/core/models/article-details';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/app/core/services/article.service';
 import Article from 'src/app/core/models/article-model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,20 +12,32 @@ import Article from 'src/app/core/models/article-model';
 })
 export class ArticleDetailsComponent implements OnInit {
 
-  articleId: string;
-  articleDetails: ArticleDetails;
-  articleComments: string;
-  article: Article;
+  @Input() article: Article;
+  currentId: string;
 
   constructor(
     private route: ActivatedRoute,
-    private articleService: ArticleService) {
-    this.articleId = route.snapshot.params['id'];
+    private articleService: ArticleService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.articleDetails = this.articleService.getArticleById(this.articleId);
-    console.log(this.articleDetails);
+    this.route.params.subscribe(data => {
+      this.currentId = data['id'];
+      this.articleService.getArticleById(this.currentId).subscribe((data) => {
+        this.article = data;
+      })
+    })
+  }
+  isAuthor(article: Article) {
+    return article['_acl']['creator'] === localStorage.getItem('userId');
+  }
+
+  deleteArticle() {
+    this.articleService.deleteArticle(this.currentId)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      })
   }
 }
 

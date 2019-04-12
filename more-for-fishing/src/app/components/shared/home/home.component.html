@@ -1,22 +1,43 @@
 <div class="jumbotron">
-  <div class="container">
-    <h1>Find an arcticle</h1>
-    <p>Search for an article using the form below:</p>
-    <form [formGroup]="form" (ngSubmit)="search(form.value)">
-      <input type="text" class="form-control" formControlName="search">
-      <button type="sumbit" name="submitButton" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Search</button>
-    </form>
-  </div>
-  <div>
-    <div class="container">
-      <h3 class="pb-3 mb-4 font-italic border-bottom">
-        Articles
-      </h3>
-      <div class="row">
-        <div class="col-md-6" *ngFor="let article of articles">
-          <app-article [article]="article"></app-article>
+  <div class="div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center>
+    <div *ngIf="isLoggedIn" class="container">
+      <h1>Find an arcticle</h1>
+      <p>Search for an article using the form below:</p>
+      <form [formGroup]="form" (ngSubmit)="search(form.value)">
+        <input type="text" class="form-control" formControlName="search">
+        <button type="sumbit" name="submitButton" class="btn btn-primary"><i
+            class="fa fa-fw fa-search"></i>Search</button>
+      </form>
+    </div>
+    <div>
+      <div class="container">
+        <h3> Read our new aricles </h3>
+        <div class="row">
+          <div class="col-md-6" *ngFor="let article of (articles$ | async);">
+            <app-article [article]="article"></app-article>
+          </div>
+        </div>
+        <div *ngIf="!isLoggedIn" class="jumbotron">
+          <div class="row">
+            <div class="card text-white bg-info mb-3">
+              <div class="card-body">
+                <h4 class="card-title">New member?</h4>
+                <p class="card-text">Get a free registration and read our latest articles</p>
+                <div class="btn btn-secondary" routerLink="/register">
+                  <span><i class="fas fa-user-plus"></i>Register</span>
+                </div>
+              </div>
+            </div>
+            <div class="card text-white bg-info mb-3">
+              <div class="card-body">
+                <h4 class="card-title">Already registered?</h4>
+                <p class="card-text">Login and read our latest articles</p>
+                <div class="btn btn-secondary" routerLink="/login">
+                  <span><i class="fas fa-sign-in-alt"></i>Login</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>

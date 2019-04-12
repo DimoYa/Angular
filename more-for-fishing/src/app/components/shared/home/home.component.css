@@ -1,3 +1,17 @@
 .jumbotron {
     margin-bottom: 0rem;
+    margin: auto;
+    border: 2px solid black;
+    color: black;
+    width: 100%;
+  }
+  .card {
+    margin: auto;
+    border: 2px solid black;
+    max-width: auto
+  }
+  h3 {
+    text-align: center;
+    margin: 20px auto;
+    font-weight: bold;
   }

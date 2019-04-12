@@ -10,10 +10,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
-
-
-const appKey = 'kid_rJyhiXLYV';
-const appSecret = '21b5781390524ab5900561984ee6b2c9';
+import { appKey, appSecret } from 'src/app/kinvey.tokens';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

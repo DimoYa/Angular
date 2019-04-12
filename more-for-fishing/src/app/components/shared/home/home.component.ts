@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import Article from 'src/app//core/models/article-details';
 import { ArticleService } from 'src/app/core/services/article.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import Article from 'src/app/core/models/article-model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +12,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  articles: Article[];
+  articles$: Observable<Article[]>;
   form: FormGroup;
+  isLoggedIn: boolean;
 
-  constructor(private articleService: ArticleService,
+  constructor(
+    private articleService: ArticleService,
+    private authService: AuthenticationService,
     private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       search: ['', Validators.nullValidator],
     });
-
-    this.articles = this.articleService.getArticles();
-    console.log(this.articles);
+    
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if(this.isLoggedIn) {
+      this.articles$ = this.articleService.getArticles();
+    }
   };
-
 }
