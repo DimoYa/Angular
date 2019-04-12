@@ -11,7 +11,7 @@
 					<p>{{article.content}}</p>
 				</li>
 			</ul>
-			<button type="button" class="btn btn-danger" (click)="deleteArticle()">Delete</button>
+			<button *ngIf="isAuthor" type="button" class="btn btn-danger" (click)="deleteArticle()">Delete</button>
 		</div>
 	</div>
 </ng-template>

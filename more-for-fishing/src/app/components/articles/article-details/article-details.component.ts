@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/app/core/services/article.service';
 import Article from 'src/app/core/models/article-model';
@@ -10,15 +10,21 @@ import { Observable } from 'rxjs';
   templateUrl: './article-details.component.html',
   styleUrls: ['./article-details.component.css']
 })
-export class ArticleDetailsComponent implements OnInit {
+export class ArticleDetailsComponent implements OnInit, DoCheck {
+ 
 
   @Input() article: Article;
   currentId: string;
+  isAuthor: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
     private router: Router) {
+  }
+
+  ngDoCheck(): void {
+    this.isAuthor = this.article['_acl']['creator'] === localStorage.getItem('id');
   }
 
   ngOnInit() {
@@ -28,9 +34,6 @@ export class ArticleDetailsComponent implements OnInit {
         this.article = data;
       })
     })
-  }
-  isAuthor(article: Article) {
-    return article['_acl']['creator'] === localStorage.getItem('userId');
   }
 
   deleteArticle() {
