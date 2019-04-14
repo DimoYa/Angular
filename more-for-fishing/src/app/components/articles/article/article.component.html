@@ -10,7 +10,7 @@
          <div *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="mb-1 text-muted small">Modified:
             <span>{{article['_kmd']['lmt'] | date: 'fullDate'}}</span></div>
          <p class="card-text mb-auto">{{article.content | slice:0:100}}...</p>
-         <button class="btn btn-outline-primary btn-sm" role="button" routerLink="{{article._id}}">Continue reading</button>
+         <button class="btn btn-outline-primary btn-sm" role="button" routerLink="details/{{article._id}}">Continue reading</button>
       </div>
       <img *ngIf="article.image" class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]"
          src="{{article.image}}">

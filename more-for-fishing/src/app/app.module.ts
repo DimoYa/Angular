@@ -24,6 +24,7 @@ import { CreateArticleComponent } from './components/articles/create-article/cre
 import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
+import { ArticleListComponent } from './components/articles/article-list/article-list.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { UpdateUserComponent } from './components/user-management/update-user/up
     CreateArticleComponent,
     ArticleUserComponent,
     EditArticleComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,

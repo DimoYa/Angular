@@ -29,5 +29,12 @@ ul {
   border: 2px solid black;
   color: black;
   width: 50%;
+}
 
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  
 }

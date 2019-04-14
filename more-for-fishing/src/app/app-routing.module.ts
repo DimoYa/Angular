@@ -9,6 +9,7 @@ import { UserDetailsComponent } from './components/user-management/user-details/
 import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
+import { ArticleListComponent } from './components/articles/article-list/article-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'articles'},
@@ -16,10 +17,11 @@ const routes: Routes = [
   { path: 'register',component: RegisterComponent },
   { path: 'login',component: LoginComponent },
   { path: 'myProfile',component: UserDetailsComponent, canActivate: [AuthenticationGuard] },
-  { path: 'articles/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
-  { path: 'create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
-  { path: 'edit/:id',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
-  { path: 'myProfile/edit/:id',component: UpdateUserComponent, canActivate: [AuthenticationGuard] },
+  { path: 'myProfile/edit',component: UpdateUserComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/details/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/details/:id/edit',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/myArticles',component: ArticleListComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({

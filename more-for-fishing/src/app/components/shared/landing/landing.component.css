@@ -14,6 +14,12 @@
     text-align: center;
     margin: 20px auto;
     font-weight: bold;
+    color: #333;
+    font-family: Song Myung,Helvetica,Arial,sans-serif;
+  }
+  h1 {
+    color: #333;
+    font-family: Song Myung,Helvetica,Arial,sans-serif;
   }
 
   button {

@@ -23,8 +23,12 @@ export class ArticleService {
   }
 
   getArticleById(id: string) {
-    let test = this.http.get<Article>(this.CREATE_POST + `/${id}`);
-    return test;
+    return this.http.get<Article>(this.CREATE_POST + `/${id}`);
+  }
+
+  getUserArticles() {
+    return this.http
+    .get<Article[]>(`${this.BASE_URL}/article?query={"author":"${localStorage.getItem('username')}"}&sort={"_kmd.ect": -1}`);
   }
 
   deleteArticle(id: string) {

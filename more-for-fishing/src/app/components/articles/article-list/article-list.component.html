@@ -1,0 +1,8 @@
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
+  <div class="jumbotron">
+    <h1 class="panel-title">My articles</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let article of (articles$ | async);">
+        <app-article-user [article]="article"></app-article-user>
+      </li>
+    </ul>

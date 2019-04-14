@@ -36,9 +36,5 @@ export class ArticleDetailsComponent {
         this.router.navigate(['/articles']);
       })
   }
-
-  editArticle(id: string) {
-    this.router.navigate([`/edit/${id}`]);
-  }
 }
 
