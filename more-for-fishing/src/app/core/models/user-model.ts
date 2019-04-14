@@ -5,6 +5,6 @@ interface UserModel {
     password: string,
     confirmPassword: string,
     phoneNumber?: string,
-    photo?: string,
+    image?: string,
 }
 export default UserModel;

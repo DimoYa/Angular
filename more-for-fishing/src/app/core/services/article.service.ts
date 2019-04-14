@@ -23,10 +23,15 @@ export class ArticleService {
   }
 
   getArticleById(id: string) {
-    return this.http.get<Article>(this.CREATE_POST + `/${id}`);
+    let test = this.http.get<Article>(this.CREATE_POST + `/${id}`);
+    return test;
   }
 
   deleteArticle(id: string) {
     return this.http.delete(this.CREATE_POST + `/${id}`);
+  }
+
+  editArticle(body: Object, id: string) {
+    return this.http.put(this.CREATE_POST + `/${id}`, body);
   }
 }

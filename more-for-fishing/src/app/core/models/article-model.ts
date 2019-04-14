@@ -3,7 +3,7 @@ interface Article {
     url: string;
     header: string;
     content: string;
-    imageUrl: string;
+    image: string;
 }
 
 export default Article;

@@ -22,6 +22,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
 import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
+import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 
 
 @NgModule({
@@ -36,13 +37,14 @@ import { ArticleUserComponent } from './components/articles/article-user/article
     FooterComponent,
     UserDetailsComponent,
     CreateArticleComponent,
-    ArticleUserComponent
+    ArticleUserComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
     ToastrModule.forRoot()
   ],

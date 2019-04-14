@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class CreateArticleComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private articleService: ArticleService,
     private router: Router) { }
 

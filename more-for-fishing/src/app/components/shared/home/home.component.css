@@ -15,3 +15,7 @@
     margin: 20px auto;
     font-weight: bold;
   }
+
+  button {
+    margin-top: 5px;
+  }

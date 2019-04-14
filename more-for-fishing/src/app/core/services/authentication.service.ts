@@ -48,14 +48,19 @@ export class AuthenticationService {
     return username === 'Admin';
   }
 
+  returnId(): string {
+
+    return localStorage.getItem('id');
+  }
+
   returnUserName(): string {
 
     return localStorage.getItem('username');
   }
 
-  returnId(): string {
+  returnUserPhoto(): string {
 
-    return localStorage.getItem('id');
+    return localStorage.getItem('photo');
   }
 
   getUserData(profileId): Observable<UserModel> {

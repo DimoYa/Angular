@@ -30,3 +30,11 @@ ul {
     color: black;
     width: 100%;
 }
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  
+}

@@ -76,8 +76,8 @@
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-image"></i> </span>
-            <input name="photo" placeholder="image" formControlName="photo" type="file">
           </div>
+          <input class="form-control" formControlName="photo" placeholder="Add image link">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || f.confirmPassword.value !== f.password.value">
