@@ -33,7 +33,7 @@ export class ArticleDetailsComponent {
   deleteArticle(id: string) {
     this.articleService.deleteArticle(id)
       .subscribe(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/articles']);
       })
   }
 

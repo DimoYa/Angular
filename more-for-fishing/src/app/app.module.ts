@@ -7,7 +7,7 @@ import { RegisterComponent } from './components/authentication/register/register
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
-import { HomeComponent } from './components/shared/home/home.component';
+import { LandingComponent } from './components/shared/landing/landing.component';
 import { ArticleComponent } from './components/articles/article/article.component';
 import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
 import { ArticleService } from './core/services/article.service';
@@ -31,7 +31,7 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
     RegisterComponent,
     LoginComponent,
     NavigationComponent,
-    HomeComponent,
+    LandingComponent,
     ArticleComponent,
     ArticleDetailsComponent,
     FooterComponent,

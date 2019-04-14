@@ -30,7 +30,7 @@ export class CreateArticleComponent implements OnInit {
 
     this.articleService.createArticle(body)
       .subscribe(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/articles']);
       })
   }
   get f() {

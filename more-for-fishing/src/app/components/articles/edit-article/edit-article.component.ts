@@ -41,7 +41,7 @@ export class EditArticleComponent implements OnInit {
 
     this.articleService.editArticle(body, this.article['_id'])
       .subscribe(() => {
-        this.router.navigate([ '/home' ]);
+        this.router.navigate([ '/articles' ]);
       })
   }
   get f() {

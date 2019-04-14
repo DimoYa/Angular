@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/shared/home/home.component';
+import { LandingComponent } from './components/shared/landing/landing.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
@@ -10,12 +10,12 @@ import { CreateArticleComponent } from './components/articles/create-article/cre
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
-  { path: 'home', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'articles'},
+  { path: 'articles', component: LandingComponent },
   { path: 'register',component: RegisterComponent },
   { path: 'login',component: LoginComponent },
   { path: 'myProfile',component: UserDetailsComponent, canActivate: [AuthenticationGuard] },
-  { path: 'home/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'edit/:id',component: EditArticleComponent, canActivate: [AuthenticationGuard] }
 ];

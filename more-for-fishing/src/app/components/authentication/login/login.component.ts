@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('username', data['username']);
           localStorage.setItem('id', data['_id']);
           localStorage.setItem('photo', data['photo']);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/articles']);
       });
     this.form.reset();
   };
