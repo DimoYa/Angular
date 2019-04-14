@@ -19,10 +19,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
 import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
 import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
+import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
     UserDetailsComponent,
     CreateArticleComponent,
     ArticleUserComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

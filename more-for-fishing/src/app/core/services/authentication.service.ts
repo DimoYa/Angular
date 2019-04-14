@@ -30,6 +30,10 @@ export class AuthenticationService {
     return this.http.post(`${this.baseUrl}/_logout`, {});
   }
 
+  updateUser(usrModel: UserModel, id: string): Observable<UserModel> {
+    return this.http.put<UserModel>(this.baseUrl + `/${id}`, usrModel);
+  }
+
   isLoggedIn() {
     return localStorage.getItem('authtoken') !== null;
   }
@@ -47,6 +51,7 @@ export class AuthenticationService {
 
     return username === 'Admin';
   }
+
 
   returnId(): string {
 

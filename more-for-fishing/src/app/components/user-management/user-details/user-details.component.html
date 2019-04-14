@@ -5,12 +5,18 @@
             <img class="Thumbnail" *ngIf="userData.photo" alt="Thumbnail [200x250]" src="{{userData.photo}}">
             <ul class="list-group">
                 <li class="list-group-item">FullName: <span>{{userData.fullname}}</span></li>
-                <li class="list-group-item">Member since: <span>{{userData['_kmd']['lmt'] | date: 'dd/MM/yyyy'}}</span></li>
+                <li class="list-group-item">Member since: <span>{{userData['_kmd']['lmt'] | date: 'dd/MM/yyyy'}}</span>
+                </li>
                 <li class="list-group-item">Email: <span> {{userData.email}}</span></li>
                 <li class="list-group-item" *ngIf="userData.phoneNumber">Phone number:
                     <span>{{userData.phoneNumber}}</span></li>
             </ul>
-            <button type="button" class="btn btn-danger" (click)="destroy()">Delete my account</button>
+            <div id="buttons">
+                <button type="button" class="btn btn-success" (click)="updateMyUserInfo()">Edit my info</button>
+                &nbsp;
+                <button type=" button" class="btn btn-danger" (click)="destroy()">Delete
+                    my account</button>
+            </div>
         </div>
     </div>
 </ng-template>

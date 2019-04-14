@@ -26,6 +26,10 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
+  updateMyUserInfo() {
+    this.router.navigateByUrl(`myProfile/edit/${this.id}`);
+  }
+
   destroy() {
     this.authService.destroy(this.id)
     .subscribe(res => {

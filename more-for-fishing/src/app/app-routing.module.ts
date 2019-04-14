@@ -5,9 +5,10 @@ import { RegisterComponent } from './components/authentication/register/register
 import { LoginComponent } from './components/authentication/login/login.component';
 import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
 import { AuthenticationGuard } from './core/guards/authentication.guard';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
 import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
+import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'articles'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'myProfile',component: UserDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
-  { path: 'edit/:id',component: EditArticleComponent, canActivate: [AuthenticationGuard] }
+  { path: 'edit/:id',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
+  { path: 'myProfile/edit/:id',component: UpdateUserComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({

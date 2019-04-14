@@ -1,0 +1,50 @@
+<ng-template [ngIf]="userData">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <h1>Update user info</h1>
+        <form [formGroup]="updateUserForm" (submit)="updateUser()">
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input class="form-control" formControlName="fullname" placeholder="Full Name"
+              [(ngModel)]="userData.fullname">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.fullname?.touched && f.fullname.errors?.required">
+            This field is required!
+          </div>
+          <div class="alert alert-danger" *ngIf="f.fullname?.errors?.pattern">
+            The full name input field must contain two names (letters only) separated by a space!
+          </div>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+            </div>
+            <select class="custom-select" style="max-width: 120px;">
+              <option value="{{number}}" *ngFor="let number of getNumbers">{{number}}</option>
+            </select>
+            <input class="form-control" formControlName="phoneNumber" placeholder="Phone number" type="text"
+              [(ngModel)]="userData.phoneNumber">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.phoneNumber?.errors?.pattern">
+            Invalid phone number!
+          </div>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-image"></i> </span>
+            </div>
+            <input class="form-control" formControlName="photo" placeholder="Add image link"
+              [(ngModel)]="userData.photo">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="updateUserForm.invalid">
+              Update Account </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</ng-template>
