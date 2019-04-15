@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h5>Add comment</h5>
+  <form [formGroup]="commentForm" (submit)="addComment()">
+    <div class="form-group">
+      <textarea class="form-control" rows="3" formControlName="content"
+        placeholder="Enter yout content here"></textarea>
+      <div class="alert alert-danger" *ngIf="c.content?.touched && c.content.errors?.required">
+        This field is required!
+      </div>
+      <div class="alert alert-danger" *ngIf="c.content.errors?.minlength">
+        The text must be at least {{c.content.errors?.minlength.requiredLength}} characters
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="commentForm.invalid"> Add
+    </button>
+  </form>
+</div>

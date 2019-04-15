@@ -4,5 +4,15 @@
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let article of (articles$ | async);">
         <app-article-user [article]="article"></app-article-user>
+        <div id="buttons">
+          <button type="button" class="btn btn-info" routerLink="{{article._id}}">Article
+            details</button>
+          &nbsp;
+          <button type="button" class="btn btn-success" routerLink="{{article._id}}/edit">Edit
+            article</button>
+          &nbsp;
+          <button type="button" class="btn btn-danger" (click)="deleteArticle(article['_id'])">Delete
+            article</button>
+        </div>
       </li>
     </ul>

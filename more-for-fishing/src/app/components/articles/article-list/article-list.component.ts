@@ -6,7 +6,7 @@ import { ArticleService } from 'src/app/core/services/article.service';
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+  styleUrls: ['./article-list.component.css'],
 })
 export class ArticleListComponent implements OnInit {
   
@@ -16,5 +16,10 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this.articles$ = this.articleService.getUserArticles();
   }
-
+  deleteArticle(id: string) {
+    this.articleService.deleteArticle(id)
+      .subscribe(() => {
+        this.articles$ = this.articleService.getUserArticles();
+      })
+  }
 }

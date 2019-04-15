@@ -1,11 +1,3 @@
 <ng-template [ngIf]="article">
-  <li class="list-group-item"><strong class="d-inline-block mb-2 text-primary" routerLink="{{article._id}}">{{article.headline}}</strong>
-    <div id="buttons">
-      <button type="button" class="btn btn-success" (click)="editArticle(article['_id'])">Edit
-        article</button>
-      &nbsp;
-      <button type="button" class="btn btn-danger" (click)="deleteArticle(article['_id'])">Delete
-        article</button>
-    </div>
-  </li>
+  <li class="list-group-item">{{article.headline}}</li>
 </ng-template>

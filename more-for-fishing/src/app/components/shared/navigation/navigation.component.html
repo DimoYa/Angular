@@ -21,8 +21,8 @@
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/articles/create') && isAuth"><i class="fa fa-plus"></i>Create
           article</a>
       </li>
-      <li class="nav-item" routerLink="articles/myArticles">
-        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/articles/myArticles') && isAuth"><i class="fas fa-newspaper"></i>My articles</a>
+      <li class="nav-item" routerLink="articles/details">
+        <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/articles/details') && isAuth"><i class="fas fa-newspaper"></i>My articles</a>
       </li>
       <li class="nav-item">
         <a class="navbar-brand" *ngIf="isAuth" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a>

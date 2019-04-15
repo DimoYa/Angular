@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'articles/details/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details/:id/edit',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
-  { path: 'articles/myArticles',component: ArticleListComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/details',component: ArticleListComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({
