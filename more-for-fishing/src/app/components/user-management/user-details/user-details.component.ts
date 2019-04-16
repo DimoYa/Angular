@@ -26,7 +26,7 @@ export class UserDetailsComponent implements OnInit {
 
   }
   destroy() {
-    this.authService.destroy(this.id)
+    this.authService.disableUser(this.id)
     .subscribe(res => {
       localStorage.clear();
       this.authService.currentAuthtoken = '';

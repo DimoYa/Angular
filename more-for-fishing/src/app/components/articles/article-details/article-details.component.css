@@ -27,7 +27,6 @@ ul {
 .jumbotron {
     margin: auto;
     border: 2px solid black;
-    color: black;
     width: 100%;
 }
 
@@ -37,3 +36,8 @@ ul {
   align-items: center;
   height: 100%;
 }
+
+.form-control:disabled {
+  background-color: white
+}
+

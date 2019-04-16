@@ -21,7 +21,13 @@
 					article</button>
 			</div>
 			<div id="createComment">
-				<app-create-comment [articleId]="article._id"></app-create-comment>
+				<app-create-comment [articleId]="article._id" (articleCommentEmitter)="loadComments()">
+				</app-create-comment>
+			</div>
+			<div id="commentList">
+				<app-comment-details *ngFor="let commentInfo of (comments$ | async)" [commentInfo]="commentInfo"
+					(deleteCommentEmitter)="deleteComment($event)">
+				</app-comment-details>
 			</div>
 		</div>
 	</div>

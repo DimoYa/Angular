@@ -26,6 +26,7 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
 import { ArticleListComponent } from './components/articles/article-list/article-list.component';
 import { CreateCommentComponent } from './components/comments/create-comment/create-comment.component';
+import { CommentDetailsComponent } from './components/comments/comment-details/comment-details.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CreateCommentComponent } from './components/comments/create-comment/cre
     EditArticleComponent,
     UpdateUserComponent,
     ArticleListComponent,
-    CreateCommentComponent
+    CreateCommentComponent,
+    CommentDetailsComponent
   ],
   imports: [
     BrowserModule,

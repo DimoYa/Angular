@@ -79,4 +79,12 @@ export class AuthenticationService {
   destroy(Id) {
     return this.http.delete(`${this.baseUrl}/${Id}`);
   }
+
+  disableUser(Id) {
+    return this.http.delete(`${this.baseUrl}/${Id}?soft=true`);
+  }
+
+  enableleUser(Id) {
+    return this.http.post(`${this.baseUrl}/${Id}_restore` , {});
+  }
 }

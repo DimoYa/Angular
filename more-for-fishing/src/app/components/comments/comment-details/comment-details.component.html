@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <div id="elements">
+    <span class="fa fa-pencil">{{commentInfo['author']}}</span> 
+    <span class="fa fa-clock-o">13:94</span> &nbsp;
+    <span class="fa fa-calendar">04/01/2015</span> &nbsp;
+  </div>
+  <textarea readonly class="form-control" id="commentBox" rows="3">{{commentInfo['content']}}</textarea>
+  <div *ngIf="isAuthor(commentInfo)" id="buttons">
+    <button type="button" class="btn btn-success" >Edit
+      comment</button>
+    &nbsp;
+    <button type="button" class="btn btn-danger" >Delete
+      comment</button>
+  </div>
+</div>
