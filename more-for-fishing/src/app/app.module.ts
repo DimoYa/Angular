@@ -26,6 +26,8 @@ import { UpdateUserComponent } from './components/user-management/update-user/up
 import { ArticleListComponent } from './components/articles/article-list/article-list.component';
 import { CreateCommentComponent } from './components/comments/create-comment/create-comment.component';
 import { CommentDetailsComponent } from './components/comments/comment-details/comment-details.component';
+import { EditCommentComponent } from './components/comments/edit-comment/edit-comment.component';
+import { ArticleSearchComponent } from './components/articles/article-search/article-search.component';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { CommentDetailsComponent } from './components/comments/comment-details/c
     ArticleListComponent,
     CreateCommentComponent,
     CommentDetailsComponent,
+    EditCommentComponent,
+    ArticleSearchComponent,
   ],
   imports: [
     BrowserModule,

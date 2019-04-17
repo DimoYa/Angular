@@ -31,6 +31,13 @@ export class ArticleService {
     .get<Article[]>(`${this.BASE_URL}/article?query={"author":"${localStorage.getItem('username')}"}&sort={"_kmd.ect": -1}`);
   }
 
+  getArticlesByTitle(title: string) {
+
+    let id = `${this.BASE_URL}/article?query={"headline":"${title}"}&sort={"_kmd.ect": -1}`;
+    return this.http
+    .get<Article[]>(id);
+  }
+
   deleteArticle(id: string) {
     return this.http.delete(this.CREATE_POST + `/${id}`);
   }

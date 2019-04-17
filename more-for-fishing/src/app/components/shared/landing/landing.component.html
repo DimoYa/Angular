@@ -1,13 +1,7 @@
 <div class="jumbotron">
   <div class="div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center>
     <div *ngIf="isLoggedIn" class="container">
-      <h1>Find an arcticle</h1>
-      <p>Search for an article using the form below:</p>
-      <form [formGroup]="form" (ngSubmit)="search(form.value)">
-        <input type="text" class="form-control" formControlName="search">
-        <button type="sumbit" name="submitButton" class="btn btn-primary"><i
-            class="fa fa-fw fa-search"></i>Search</button>
-      </form>
+     <app-article-search></app-article-search>
     </div>
     <div>
       <div class="container">

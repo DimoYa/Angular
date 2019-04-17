@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Find an arcticle</h1>
+  <p>Search for an article using the form below:</p>
+  <form [formGroup]="form" (submit)="search(form.value)">
+    <input type=" text" class="form-control" formControlName="search">
+    <button type="submit" class="btn btn-primary" ><i
+        class="fa fa-fw fa-search"></i>Search</button>
+  </form>
+  <div class="row">
+      <div class="col-md-6" *ngFor="let article of (articles$ | async);">
+        <app-article [article]="article"></app-article>
+      </div>
+</div>
+

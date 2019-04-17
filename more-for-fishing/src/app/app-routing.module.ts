@@ -10,6 +10,7 @@ import { CreateArticleComponent } from './components/articles/create-article/cre
 import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
 import { ArticleListComponent } from './components/articles/article-list/article-list.component';
+import { EditCommentComponent } from './components/comments/edit-comment/edit-comment.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'articles'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'articles/create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details/:id/edit',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details',component: ArticleListComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/details/:id/comments/:id/edit',component: EditCommentComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({

@@ -13,19 +13,13 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 export class LandingComponent implements OnInit {
 
   articles$: Observable<Article[]>;
-  form: FormGroup;
   isLoggedIn: boolean;
 
   constructor(
     private articleService: ArticleService,
-    private authService: AuthenticationService,
-    private fb: FormBuilder) { }
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      search: ['', Validators.nullValidator],
-    });
-    
     this.isLoggedIn = this.authService.isLoggedIn();
     if(this.isLoggedIn) {
       this.articles$ = this.articleService.getArticles();

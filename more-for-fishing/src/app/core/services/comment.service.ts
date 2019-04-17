@@ -25,4 +25,12 @@ export class CommentService {
   deleteComment(id: string) {
     return this.http.delete(`${this.CREATE_COMMENT}/${id}`);
   }
+
+  getCommentById(id: string) {
+    return this.http.get<Comment>(this.CREATE_COMMENT + `/${id}`);
+  }
+
+  editComment(body: Object, id: string) {
+    return this.http.put(this.CREATE_COMMENT + `/${id}`, body);
+  }
 }

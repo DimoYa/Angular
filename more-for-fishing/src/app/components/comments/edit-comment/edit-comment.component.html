@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <h5>Update comment</h5>
+      <form [formGroup]="updateCommentForm" (submit)="updateComment()">
+        <div class="form-group">
+          <textarea class="form-control" rows="3" formControlName="content" placeholder="Enter yout content here"
+            [(ngModel)]="commentInfo.content"></textarea>
+          <div class="alert alert-danger" *ngIf="c.content?.touched && c.content.errors?.required">
+            This field is required!
+          </div>
+          <div class="alert alert-danger" *ngIf="c.content.errors?.minlength">
+            The text must be at least {{c.content.errors?.minlength.requiredLength}} characters
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="updateCommentForm.invalid"> Update comment
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
