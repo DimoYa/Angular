@@ -25,9 +25,17 @@
 				</app-create-comment>
 			</div>
 			<div id="commentList">
-				<app-comment-details *ngFor="let commentInfo of (comments$ | async)" [commentInfo]="commentInfo"
-					(deleteCommentEmitter)="deleteComment($event)">
-				</app-comment-details>
+				<button class="accordion" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+				 aria-controls="collapseExample" *ngIf="(comments$ | async)?.length">
+					Show comments
+				</button>
+				<div class="collapse" id="collapseExample">
+					<div class="card card-body">
+						<app-comment-details *ngFor="let commentInfo of (comments$ | async)" [commentInfo]="commentInfo"
+						 (deleteCommentEmitter)="deleteComment($event)">
+						</app-comment-details>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

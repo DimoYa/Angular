@@ -16,7 +16,6 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
@@ -46,15 +45,14 @@ import { CommentDetailsComponent } from './components/comments/comment-details/c
     UpdateUserComponent,
     ArticleListComponent,
     CreateCommentComponent,
-    CommentDetailsComponent
+    CommentDetailsComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [
     ArticleService,
@@ -71,6 +69,6 @@ import { CommentDetailsComponent } from './components/comments/comment-details/c
     }
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

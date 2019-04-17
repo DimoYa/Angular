@@ -1,8 +1,10 @@
+
 h1 {
     text-align: center;
     margin: 20px auto;
-    color: #721c24;
-    font-weight: bold;
+    color: #721c24;    font-weight: bold;
+    color: #147a9e!important;
+    font-family: Song Myung,Helvetica,Arial,sans-serif;
   }
 
   span {
@@ -40,4 +42,40 @@ ul {
 .form-control:disabled {
   background-color: white
 }
+
+.accordion {
+  background-color: #f8d7da;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #f5c6cb;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+#commentList {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#commentList button {
+  text-align: center;
+  font-weight: bold;
+  color: #147a9e!important;
+  font-family: Song Myung,Helvetica,Arial,sans-serif;
+}
+
 

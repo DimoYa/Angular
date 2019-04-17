@@ -2,13 +2,15 @@
    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
       <div class="card-body d-flex flex-column align-items-start">
          <strong class="d-inline-block mb-2 text-primary">{{article.headline}}</strong>
-         <h6 class="mb-0">
-            <a class="text-dark" href="#">Creator: <span>{{article.author}}</span></a>
-         </h6>
-         <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Published:
-            <span>{{article['_kmd']['ect'] | date: 'fullDate'}}</span></div>
+         <div class="mb-1 text-muted small">Creator: 
+            <span class="fa fa-pencil">{{article.author}}</span>
+         </div>
+         <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Published: &nbsp;
+            <span class="fa fa-calendar">{{article['_kmd']['ect'] | date: 'fullDate'}}</span> &nbsp;
+            <span class="fa fa-clock-o">{{article['_kmd']['ect'] | date: 'HH:mm'}}</span></div>
          <div *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="mb-1 text-muted small">Modified:
-            <span>{{article['_kmd']['lmt'] | date: 'fullDate'}}</span></div>
+            <span class="fa fa-calendar">{{article['_kmd']['lmt'] | date: 'fullDate'}}</span> &nbsp;
+            <span class="fa fa-clock-o">{{article['_kmd']['lmt'] | date: 'HH:mm'}}</span></div>
          <p class="card-text mb-auto">{{article.content | slice:0:100}}...</p>
          <button class="btn btn-outline-primary btn-sm" role="button" routerLink="details/{{article._id}}">Continue reading</button>
       </div>

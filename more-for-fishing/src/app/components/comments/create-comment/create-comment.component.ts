@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment.service';
 import { Router } from '@angular/router';
-import Article from 'src/app/core/models/article-model';
 
 @Component({
   selector: 'app-create-comment',
@@ -21,7 +20,7 @@ export class CreateCommentComponent implements OnInit {
 
   ngOnInit() {
     this.commentForm = this.fb.group({
-      content: ['', [Validators.required, Validators.minLength(10)]],
+      content: ['', [Validators.required, Validators.minLength(1)]],
     })
   }
 
