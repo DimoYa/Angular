@@ -25,9 +25,10 @@
 				</app-create-comment>
 			</div>
 			<div id="commentList">
-				<button class="accordion" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
-				 aria-controls="collapseExample" *ngIf="(comments$ | async)?.length">
-					Show comments
+				<button class="accordion" (click)="isExpanded=!isExpanded" type="button" data-toggle="collapse" data-target="#collapseExample"
+				 aria-expanded="false" aria-controls="collapseExample" *ngIf="(comments$ | async)?.length">
+					<span *ngIf="isExpanded==false">Show comments</span>
+					<span *ngIf="isExpanded==true">Hide comments</span>
 				</button>
 				<div class="collapse" id="collapseExample">
 					<div class="card card-body">

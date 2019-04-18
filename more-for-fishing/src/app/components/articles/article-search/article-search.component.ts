@@ -30,11 +30,14 @@ export class ArticleSearchComponent implements OnInit {
     });
   }
 
-  search(input: string) {
-    console.log(input['search']);
+  search(input: any) {
     this.articles$ = this.articleService.getArticlesByTitle(input['search']);
-    console.log(this.articles$);
   }
-  
+
+  clear() {
+    this.form.reset();
+    this.articles$ = this.articleService.getArticlesByTitle('');
+  }
+
 
 }

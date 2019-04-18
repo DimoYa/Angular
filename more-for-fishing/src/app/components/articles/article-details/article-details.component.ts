@@ -16,6 +16,7 @@ export class ArticleDetailsComponent {
   article: Article;
   comments$: Observable<Comment[]>;
   id: string;
+  isExpanded = false;
 
   constructor(private articleService: ArticleService,
     private router: Router,

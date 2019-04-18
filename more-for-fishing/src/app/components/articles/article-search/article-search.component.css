@@ -6,3 +6,25 @@
   button {
     margin-top: 5px;
   }
+
+  h3 {
+    text-align: center;
+    margin: 20px auto;
+    font-weight: bold;
+    color: #147a9e!important;
+    font-family: Song Myung,Helvetica,Arial,sans-serif;
+  }
+
+  .card {
+    margin: auto;
+    border: 2px solid black;
+    max-width: auto
+  }
+
+  .jumbotron {
+    margin-bottom: 0rem;
+    margin: auto;
+    border: 2px solid black;
+    color: black;
+    width: 100%;
+  }

@@ -1,14 +1,15 @@
-<div class="container">
   <h1>Find an arcticle</h1>
   <p>Search for an article using the form below:</p>
   <form [formGroup]="form" (submit)="search(form.value)">
     <input type=" text" class="form-control" formControlName="search">
-    <button type="submit" class="btn btn-primary" ><i
-        class="fa fa-fw fa-search"></i>Search</button>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Search</button> &nbsp;
+    <button type="submit" class="btn btn-danger" (click)="clear()"><i class="fas fa-eraser"></i>Clear</button>
   </form>
-  <div class="row">
+  <div *ngIf="(articles$ | async)?.length">
+    <h3> Matched results: </h3>
+    <div class="row">
       <div class="col-md-6" *ngFor="let article of (articles$ | async);">
         <app-article [article]="article"></app-article>
       </div>
-</div>
-
+    </div>
+  </div>
