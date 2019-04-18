@@ -47,11 +47,9 @@ export class AuthenticationService {
   }
 
   isAdmin() {
-    let username: string = localStorage.getItem('username');
-
-    return username === 'Admin';
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser.isAdmin;
   }
-
 
   returnId(): string {
 

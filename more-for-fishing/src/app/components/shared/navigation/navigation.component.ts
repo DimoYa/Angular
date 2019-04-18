@@ -10,12 +10,14 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
 })
 export class NavigationComponent implements DoCheck {
   isAuth: boolean;
+  isAdmin: boolean;
 
   constructor(private router: Router,
     private authService: AuthenticationService) { }
 
   ngDoCheck(): void {
     this.isAuth = this.authService.isLoggedIn();
+    this.isAdmin = this.authService.isAdmin();
   }
 
   getAvatar() {
