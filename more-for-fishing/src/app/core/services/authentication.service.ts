@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import UserModel from '../models/user-model';
 import { Observable } from 'rxjs';
 import { appKey } from '../../kinvey.tokens';
+import UserRole from '../models/user-role';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { appKey } from '../../kinvey.tokens';
 export class AuthenticationService {
 
   private readonly baseUrl = `https://baas.kinvey.com/user/${appKey}`;
-  private readonly retrieveUsersUrl = `https://baas.kinvey.com/group/${appKey}`;
+  private readonly retrieveUsersUrl = `https://baas.kinvey.com/roles/${appKey}`;
 
   currentAuthtoken: string;
 
@@ -46,11 +47,6 @@ export class AuthenticationService {
     this.currentAuthtoken = value;
   }
 
-  isAdmin() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser.isAdmin;
-  }
-
   returnId(): string {
 
     return localStorage.getItem('id');
@@ -72,6 +68,11 @@ export class AuthenticationService {
 
   getAllUsers() {
     return this.http.get(``)
+  }
+
+  getUserRole(Id): Observable<UserRole[]> {
+   let test = this.http.get<UserRole>(`${this.baseUrl}/${Id}/roles`);
+    return this.http.get<UserRole[]>(`https://baas.kinvey.com/user/kid_rJyhiXLYV/5cb238aab424160225d8ab67/roles`);
   }
 
   destroy(Id) {

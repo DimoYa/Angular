@@ -1,6 +1,9 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/authentication.service';
+import UserModel from 'src/app/core/models/user-model';
+import UserRole from 'src/app/core/models/user-role';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,38 +11,55 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements DoCheck {
+export class NavigationComponent implements OnInit, DoCheck {
   isAuth: boolean;
-  isAdmin: boolean;
+  userData: UserModel;
+  roleId: string;
+  id: string;
+  isAdmin;
 
   constructor(private router: Router,
     private authService: AuthenticationService) { }
 
-  ngDoCheck(): void {
-    this.isAuth = this.authService.isLoggedIn();
-    this.isAdmin = this.authService.isAdmin();
-  }
+  ngOnInit() {
+    this.id = this.authService.returnId();
 
-  getAvatar() {
-    return this.authService.returnUserPhoto();
-  }
-
-  getUserName() {
-    return this.authService.returnUserName();
-  }
-
-  logout(): void {
-    this.authService
-      .logout()
-      .subscribe(res => {
-        localStorage.clear();
-        this.authService.currentAuthtoken = '';
-        this.router.navigate(['/login']);
+    this.authService.getUserData(this.id)
+      .subscribe(data => {
+        this.userData = data;
       });
-  }
 
-  checkIfItIsCurrentUrl(currToCheck: string): boolean {
+    this.authService.getUserRole(this.id)
+      .subscribe(data => {
+        this.roleId = data[0]['roleId'];
+      });
+    }
 
-    return this.router.url === currToCheck;
+    ngDoCheck(): void {
+      this.isAuth = this.authService.isLoggedIn();
+   
+    }
+
+    getAvatar() {
+      return this.authService.returnUserPhoto();
+    }
+
+    getUserName() {
+      return this.authService.returnUserName();
+    }
+
+    logout(): void {
+      this.authService
+        .logout()
+        .subscribe(res => {
+          localStorage.clear();
+          this.authService.currentAuthtoken = '';
+          this.router.navigate(['/login']);
+        });
+    }
+
+    checkIfItIsCurrentUrl(currToCheck: string): boolean {
+
+      return this.router.url === currToCheck;
+    }
   }
-}
