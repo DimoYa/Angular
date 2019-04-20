@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagementGuard implements CanActivate {
   constructor(
-    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -20,8 +20,8 @@ export class UserManagementGuard implements CanActivate {
   }
 
   isAllowed(): boolean {
-    if (this.authenticationService.isCurrentUser()
-    || this.authenticationService.isAdmin()) {
+    if (this.userService.isCurrentUser()
+    || this.userService.isAdmin()) {
       return true;
     }
 

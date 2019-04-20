@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/authentication.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 
 @Component({
@@ -13,23 +14,24 @@ export class NavigationComponent implements DoCheck {
   isAdmin: boolean;
 
   constructor(private router: Router,
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+    private userService: UserService) { }
 
     ngDoCheck(): void {
       this.isAuth = this.authService.isLoggedIn();
-      this.isAdmin = this.authService.isAdmin();
+      this.isAdmin = this.userService.isAdmin();
     }
 
     getAvatar() {
-      return this.authService.returnUserPhoto();
+      return this.userService.returnUserPhoto();
     }
 
     getUserName() {
-      return this.authService.returnUserName();
+      return this.userService.returnUserName();
     }
 
     getUserId() {
-      return this.authService.returnId();
+      return this.userService.returnId();
     }
 
     logout(): void {

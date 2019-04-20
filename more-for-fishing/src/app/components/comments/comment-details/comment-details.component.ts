@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import Article from 'src/app/core/models/article-model';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleService } from 'src/app/core/services/article.service';
-import { CommentService } from 'src/app/core/services/comment.service';
+
 
 @Component({
   selector: 'app-comment-details',

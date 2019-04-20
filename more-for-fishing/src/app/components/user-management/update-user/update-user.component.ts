@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import UserModel from 'src/app/core/models/user-model';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-update-user',
@@ -19,16 +19,16 @@ export class UpdateUserComponent implements OnInit {
   userData: UserModel;
 
   constructor(
-    private authService: AuthenticationService,
+    private userService: UserService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute) {
   }
   ngOnInit() {
 
-    this.currentUserId = this.authService.returnId();
+    this.currentUserId = this.userService.returnId();
     this.id = this.route.snapshot.params['id'];
-    this.authService.getUserData(this.id)
+    this.userService.getUserData(this.id)
       .subscribe(data => {
         this.userData = data;
         this.email = this.userData['email'];
@@ -44,7 +44,7 @@ export class UpdateUserComponent implements OnInit {
   updateUser() {
     const body = this.updateUserForm.value;
     body['email'] = this.email;
-    this.authService.updateUser(body, this.id)
+    this.userService.updateUser(body, this.id)
       .subscribe(res => {
         if (this.id === this.currentUserId) {
           localStorage['photo'] = body['photo'];

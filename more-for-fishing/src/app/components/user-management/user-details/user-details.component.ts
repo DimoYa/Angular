@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import UserModel from 'src/app/core/models/user-model';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/core/services/user.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-user-details',
@@ -14,13 +15,15 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private authService: AuthenticationService
+
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.authService.getUserData(this.id)
+    this.userService.getUserData(this.id)
       .subscribe(data => {
         this.userData = data;
         console.log(this.userData);
@@ -28,7 +31,7 @@ export class UserDetailsComponent implements OnInit {
 
   }
   destroy() {
-    this.authService.destroy(this.id)
+    this.userService.destroy(this.id)
     .subscribe(res => {
       localStorage.clear();
       this.authService.currentAuthtoken = '';

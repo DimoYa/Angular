@@ -31,6 +31,8 @@ import { EditCommentComponent } from './components/comments/edit-comment/edit-co
 import { ArticleSearchComponent } from './components/articles/article-search/article-search.component';
 import { UserManagementComponent } from './components/admin-panel/user-management/user-management.component';
 import { ArticleManagementComponent } from './components/admin-panel/article-management/article-management.component';
+import { UserService } from './core/services/user.service';
+import { CommentService } from './core/services/comment.service';
 
 
 @NgModule({
@@ -67,6 +69,8 @@ import { ArticleManagementComponent } from './components/admin-panel/article-man
   providers: [
     ArticleService,
     AuthenticationService,
+    UserService,
+    CommentService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

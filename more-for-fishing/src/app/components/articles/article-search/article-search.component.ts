@@ -38,6 +38,4 @@ export class ArticleSearchComponent implements OnInit {
     this.form.reset();
     this.articles$ = this.articleService.getArticlesByTitle('');
   }
-
-
 }
