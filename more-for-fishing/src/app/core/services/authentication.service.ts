@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import UserModel from '../models/user-model';
 import { Observable } from 'rxjs';
 import { appKey } from '../../kinvey.tokens';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthenticationService {
   currentAuthtoken: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   login(usrModel): Observable<UserModel> {
@@ -39,6 +41,10 @@ export class AuthenticationService {
 
   isAdmin(): boolean {
     return localStorage.getItem('isAdmin') === 'true';
+  }
+
+  isCurrentUser(): boolean {
+    return `/myProfile/${this.returnId()}` === this.router.url;
   }
 
   get authtoken() {
