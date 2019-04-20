@@ -34,6 +34,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('username', data['username']);
           localStorage.setItem('id', data['_id']);
           localStorage.setItem('photo', data['photo']);
+          data['_kmd']['roles'] !== undefined && data['_kmd']['roles'].length != 0  
+          ? localStorage.setItem('isAdmin', 'true')
+          : localStorage.setItem('isAdmin', 'false');
           this.router.navigate(['/articles']);
       });
     this.form.reset();

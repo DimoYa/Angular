@@ -14,19 +14,21 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.id = this.authService.returnId();
+    this.id = this.route.snapshot.params['id'];
     this.authService.getUserData(this.id)
       .subscribe(data => {
         this.userData = data;
+        console.log(this.userData);
       });
 
   }
   destroy() {
-    this.authService.disableUser(this.id)
+    this.authService.destroy(this.id)
     .subscribe(res => {
       localStorage.clear();
       this.authService.currentAuthtoken = '';

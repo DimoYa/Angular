@@ -25,6 +25,7 @@ export class CommentDetailsComponent implements OnInit {
   }
 
   isAuthor(commentInfo: object) {
-    return commentInfo['_acl']['creator'] === localStorage.getItem('id');
+    return commentInfo['_acl']['creator'] === localStorage.getItem('id') ||
+    localStorage.getItem('isAdmin') === 'true';
   }
 }

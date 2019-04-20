@@ -1,4 +1,5 @@
 interface UserModel {
+    _id: string;
     username: string,
     fullname: string,
     email: string,

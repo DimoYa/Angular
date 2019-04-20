@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,8 @@ import { CreateCommentComponent } from './components/comments/create-comment/cre
 import { CommentDetailsComponent } from './components/comments/comment-details/comment-details.component';
 import { EditCommentComponent } from './components/comments/edit-comment/edit-comment.component';
 import { ArticleSearchComponent } from './components/articles/article-search/article-search.component';
+import { UserManagementComponent } from './components/admin-panel/user-management/user-management.component';
+import { ArticleManagementComponent } from './components/admin-panel/article-management/article-management.component';
 
 
 @NgModule({
@@ -50,10 +53,13 @@ import { ArticleSearchComponent } from './components/articles/article-search/art
     CommentDetailsComponent,
     EditCommentComponent,
     ArticleSearchComponent,
+    UserManagementComponent,
+    ArticleManagementComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
     ToastrModule.forRoot(),

@@ -2,17 +2,21 @@
    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
       <div class="card-body d-flex flex-column align-items-start">
          <strong class="d-inline-block mb-2 text-primary">{{article.headline}}</strong>
-         <div class="mb-1 text-muted small">Creator: 
+         <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Created by:
             <span class="fa fa-pencil">{{article.author}}</span>
          </div>
-         <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Published: &nbsp;
+         <div *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="mb-1 text-muted small">Modified by:
+            <span class="fa fa-pencil">{{article.author}}</span>
+         </div>
+         <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Published:&nbsp;
             <span class="fa fa-calendar">{{article['_kmd']['ect'] | date: 'fullDate'}}</span> &nbsp;
             <span class="fa fa-clock-o">{{article['_kmd']['ect'] | date: 'HH:mm'}}</span></div>
          <div *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="mb-1 text-muted small">Modified:
             <span class="fa fa-calendar">{{article['_kmd']['lmt'] | date: 'fullDate'}}</span> &nbsp;
             <span class="fa fa-clock-o">{{article['_kmd']['lmt'] | date: 'HH:mm'}}</span></div>
          <p class="card-text mb-auto">{{article.content | slice:0:100}}...</p>
-         <button class="btn btn-outline-primary btn-sm" role="button" routerLink="details/{{article._id}}">Continue reading</button>
+         <button class="btn btn-outline-primary btn-sm" role="button" routerLink="details/{{article._id}}">Continue
+            reading</button>
       </div>
       <img *ngIf="article.image" class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]"
          src="{{article.image}}">

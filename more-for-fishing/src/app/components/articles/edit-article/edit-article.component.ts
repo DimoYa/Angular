@@ -37,7 +37,8 @@ export class EditArticleComponent implements OnInit {
 
   editArticle() {
     const body = this.editArticleForm.value;
-    body['author'] = localStorage.getItem('username');
+    body['author'] = this.article['author'];
+    body['modified'] = localStorage.getItem('username');
 
     this.articleService.editArticle(body, this.article['_id'])
       .subscribe(() => {

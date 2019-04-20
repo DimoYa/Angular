@@ -1,0 +1,26 @@
+ul {
+    padding-top: 2em;
+    padding-bottom: 1em;
+} 
+
+.jumbotron {
+    margin: auto;
+    border: 2px solid black;
+    color: black;
+    width: 100%;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  
+}
+h1 {
+    text-align: center;
+    margin: 20px auto;
+    font-weight: bold;
+    color: #147a9e!important;
+    font-family: Song Myung,Helvetica,Arial,sans-serif;
+  }

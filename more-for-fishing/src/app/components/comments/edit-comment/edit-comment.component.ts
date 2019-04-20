@@ -38,7 +38,8 @@ export class EditCommentComponent implements OnInit {
     const body = this.updateCommentForm.value;
     body['_id'] = this.commentInfo['_id'];
     body['articleId'] = this.commentInfo['articleId'];
-    body['author'] = localStorage.getItem('username');
+    body['author'] = this.commentInfo['author'];
+    body['modified'] = localStorage.getItem('username');
 
     this.commentService.editComment(body, this.commentId)
       .subscribe(() => {

@@ -11,14 +11,18 @@ import { EditArticleComponent } from './components/articles/edit-article/edit-ar
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
 import { ArticleListComponent } from './components/articles/article-list/article-list.component';
 import { EditCommentComponent } from './components/comments/edit-comment/edit-comment.component';
+import { UserManagementComponent } from './components/admin-panel/user-management/user-management.component';
+import { ArticleManagementComponent } from './components/admin-panel/article-management/article-management.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'articles'},
   { path: 'articles', component: LandingComponent },
   { path: 'register',component: RegisterComponent },
   { path: 'login',component: LoginComponent },
-  { path: 'myProfile',component: UserDetailsComponent, canActivate: [AuthenticationGuard] },
-  { path: 'myProfile/edit',component: UpdateUserComponent, canActivate: [AuthenticationGuard] },
+  { path: 'myProfile/:id',component: UserDetailsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'myProfile/:id/edit',component: UpdateUserComponent, canActivate: [AuthenticationGuard] },
+  { path: 'admin/user-management',component: UserManagementComponent, canActivate: [AuthenticationGuard] },
+  { path: 'admin/articles/details',component: ArticleManagementComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details/:id/edit',component: EditArticleComponent, canActivate: [AuthenticationGuard] },

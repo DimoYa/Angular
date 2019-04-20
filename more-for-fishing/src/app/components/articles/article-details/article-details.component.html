@@ -9,6 +9,8 @@
 						{{article['_kmd']['ect'] | date: 'fullDate'}}</span></li>
 				<li *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="list-group-item">Modified:<span>
 						{{article['_kmd']['lmt'] | date: 'fullDate'}}</span></li>
+				<li *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="list-group-item">Modified by:<span>
+						{{article['modified']}}</span></li>
 				<li class="list-group-item">
 					<p>{{article['content']}}</p>
 				</li>
@@ -25,15 +27,16 @@
 				</app-create-comment>
 			</div>
 			<div id="commentList">
-				<button class="accordion" (click)="isExpanded=!isExpanded" type="button" data-toggle="collapse" data-target="#collapseExample"
-				 aria-expanded="false" aria-controls="collapseExample" *ngIf="(comments$ | async)?.length">
+				<button class="accordion" (click)="isExpanded=!isExpanded" type="button" data-toggle="collapse"
+					data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+					*ngIf="(comments$ | async)?.length">
 					<span *ngIf="isExpanded==false">Show comments</span>
 					<span *ngIf="isExpanded==true">Hide comments</span>
 				</button>
 				<div class="collapse" id="collapseExample">
 					<div class="card card-body">
 						<app-comment-details *ngFor="let commentInfo of (comments$ | async)" [commentInfo]="commentInfo"
-						 (deleteCommentEmitter)="deleteComment($event)">
+							(deleteCommentEmitter)="deleteComment($event)">
 						</app-comment-details>
 					</div>
 				</div>

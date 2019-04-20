@@ -12,6 +12,7 @@ import { CommentService } from 'src/app/core/services/comment.service';
 })
 export class ArticleDetailsComponent {
 
+
   @Input('article')
   article: Article;
   comments$: Observable<Comment[]>;
@@ -35,7 +36,8 @@ export class ArticleDetailsComponent {
   }
 
   isAuthor(article: Article) {
-    return article['_acl']['creator'] === localStorage.getItem('id');
+    return article['_acl']['creator'] === localStorage.getItem('id')
+    || localStorage.getItem('isAdmin') === 'true';
   }
 
   deleteArticle(id: string) {

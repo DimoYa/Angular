@@ -12,10 +12,9 @@
                     <span>{{userData.phoneNumber}}</span></li>
             </ul>
             <div id="buttons">
-                <button type="button" class="btn btn-success" routerLink="/myProfile/edit">Edit my info</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/myProfile', userData['_id'], 'edit']">Edit user info</button>
                 &nbsp;
-                <button type=" button" class="btn btn-danger" (click)="destroy()">Delete
-                    my account</button>
+                <button type=" button" class="btn btn-danger" (click)="destroy()">Delete account</button>
             </div>
         </div>
     </div>

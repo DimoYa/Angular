@@ -26,18 +26,19 @@
         <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/articles/details') && isAuth"><i
             class="fas fa-newspaper"></i>My articles</a>
       </li>
+      <li class="dropdown" id="admin">
+        <a class="dropdown-toggle" *ngIf="isAdmin && isAuth" data-toggle="dropdown" aria-expanded="false"><i
+            class="fas fa-user-shield"></i>Admin</a>
+        <ul class="dropdown-menu" role="menu">
+          <a class="dropdownItem" routerLink="admin/user-management">User management</a>
+          <a class="dropdownItem" routerLink="admin/articles/details">Article management</a>
+        </ul>
+      </li>
       <li class="nav-item">
         <a class="navbar-brand" *ngIf="isAuth" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a>
       </li>
     </ul>
-    <li class="dropdown">
-      <a class="dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-shield"></i>Admin</a>
-        <ul class="dropdown-menu" role="menu">
-          <a class="navbar-brand" *ngIf="isAuth">User management</a>
-          <a class="navbar-brand" *ngIf="isAuth">Article management</a>
-        </ul>
-    </li>
-    <li class="nav-item" routerLink="/myProfile">
+    <li class="nav-item" routerLink="/myProfile/{{getUserId()}}">
       <img src="{{getAvatar()}}" *ngIf="!checkIfItIsCurrentUrl('/myProfile') && isAuth && getAvatar()" class="avatar"
         alt="Avatar">
       <a class="navbar-brand" *ngIf="!checkIfItIsCurrentUrl('/myProfile') && isAuth && getUserName()"><i
