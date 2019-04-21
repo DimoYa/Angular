@@ -1,60 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/authentication/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/authentication/login/login.component';
-import { NavigationComponent } from './components/shared/navigation/navigation.component';
-import { LandingComponent } from './components/shared/landing/landing.component';
-import { ArticleComponent } from './components/articles/article/article.component';
-import { ArticleDetailsComponent } from './components/articles/article-details/article-details.component';
-import { ArticleService } from './core/services/article.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationService } from './core/services/authentication.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { HandlerInterceptorService } from './core/interceptors/responseHandler.interceptor';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
-import { CreateArticleComponent } from './components/articles/create-article/create-article.component';
-import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
-import { EditArticleComponent } from './components/articles/edit-article/edit-article.component';
 import { UpdateUserComponent } from './components/user-management/update-user/update-user.component';
-import { ArticleListComponent } from './components/articles/article-list/article-list.component';
-import { CreateCommentComponent } from './components/comments/create-comment/create-comment.component';
-import { CommentDetailsComponent } from './components/comments/comment-details/comment-details.component';
-import { EditCommentComponent } from './components/comments/edit-comment/edit-comment.component';
-import { ArticleSearchComponent } from './components/articles/article-search/article-search.component';
+import { SharedModule } from './components/shared/shared.module';
+import { AuthenticationModule } from './components/authentication/authentication.module';
+import { CoreModule } from './core/core.module';
 import { UserManagementComponent } from './components/admin-panel/user-management/user-management.component';
 import { ArticleManagementComponent } from './components/admin-panel/article-management/article-management.component';
-import { UserService } from './core/services/user.service';
-import { CommentService } from './core/services/comment.service';
+import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
+import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
+import { ArticleModule } from './components/articles/article.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    NavigationComponent,
-    LandingComponent,
-    ArticleComponent,
-    ArticleDetailsComponent,
-    FooterComponent,
     UserDetailsComponent,
-    CreateArticleComponent,
-    ArticleUserComponent,
-    EditArticleComponent,
     UpdateUserComponent,
-    ArticleListComponent,
-    CreateCommentComponent,
-    CommentDetailsComponent,
-    EditCommentComponent,
-    ArticleSearchComponent,
     UserManagementComponent,
     ArticleManagementComponent,
   ],
@@ -62,26 +29,13 @@ import { CommentService } from './core/services/comment.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-  ],
-  providers: [
-    ArticleService,
-    AuthenticationService,
-    UserService,
-    CommentService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HandlerInterceptorService,
-      multi: true
-    }
-
+    SharedModule,
+    AuthenticationModule,
+    CoreModule,
+    ArticleModule
   ],
   bootstrap: [AppComponent],
 })
