@@ -1,22 +1,25 @@
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
-  <div class="jumbotron">
-    <h1 class="panel-title">Admin panel - User management</h1>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let user of (users$ | async);">
-        <h1>{{user['username']}}</h1>
-        <p *ngIf="user['_kmd']['status'] !== undefined"> <i class="fas fa-ban"></i>Disabled</p>
-        <p *ngIf="user['_kmd']['roles'] !== undefined && user['_kmd']['roles'].length != 0"> <i class="fas fa-user-shield"></i>Admin</p>
-        <div id="buttons" *ngIf=" user['_kmd']['status'] === undefined">
-          <button type="button" class="btn btn-info" [routerLink]="['/myProfile',user['_id']]">Profile
-            details</button>
-          &nbsp;
-          <button type="button" class="btn btn-success" [routerLink]="['/myProfile',user['_id'], 'edit']">Update user
-            info</button>
-          &nbsp;
-          <button type="button" class="btn btn-danger" (click)="deleteUser(user['_id'])">Disable
-            user</button>
-        </div>
-      </li>
-    </ul>
+<ng-template [ngIf]="users$">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
+    <div class="jumbotron">
+      <h1 class="panel-title">Admin panel - User management</h1>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of (users$ | async);">
+          <h1>{{user['username']}}</h1>
+          <p *ngIf="user['_kmd']['status'] !== undefined"> <i class="fas fa-ban"></i>Disabled</p>
+          <p *ngIf="user['_kmd']['roles'] !== undefined && user['_kmd']['roles'].length != 0"> <i
+              class="fas fa-user-shield"></i>Admin</p>
+          <div id="buttons" *ngIf=" user['_kmd']['status'] === undefined">
+            <button type="button" class="btn btn-info" [routerLink]="['/myProfile',user['_id']]">Profile
+              details</button>
+            &nbsp;
+            <button type="button" class="btn btn-success" [routerLink]="['/myProfile',user['_id'], 'edit']">Update user
+              info</button>
+            &nbsp;
+            <button *ngIf="user['_kmd']['roles'] === undefined" type="button" class="btn btn-danger" (click)="deleteUser(user['_id'])">Disable
+              user</button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+</ng-template>

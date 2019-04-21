@@ -12,7 +12,6 @@ import { AuthenticationModule } from './components/authentication/authentication
 import { CoreModule } from './core/core.module';
 import { UserManagementComponent } from './components/admin-panel/user-management/user-management.component';
 import { ArticleManagementComponent } from './components/admin-panel/article-management/article-management.component';
-import { ArticleUserComponent } from './components/articles/article-user/article-user.component';
 import { UserDetailsComponent } from './components/user-management/user-details/user-details.component';
 import { ArticleModule } from './components/articles/article.module';
 

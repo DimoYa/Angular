@@ -16,6 +16,7 @@ import { ArticleManagementComponent } from './components/admin-panel/article-man
 import { AdminGuard } from './core/guards/admin.guard';
 import { UserManagementGuard } from './core/guards/user-management.guard';
 import { AuthenticatedUsersGuard } from './core/guards/authenticated-users.guard';
+import { SingleArticleResolver } from './core/resolvers/single-article.resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'articles'},
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'myProfile/:id/edit',component: UpdateUserComponent, canActivate: [AuthenticationGuard, UserManagementGuard] },
   { path: 'admin/user-management',component: UserManagementComponent, canActivate: [AdminGuard] },
   { path: 'admin/articles/details',component: ArticleManagementComponent, canActivate: [AdminGuard] },
-  { path: 'articles/details/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'articles/details/:id',component: ArticleDetailsComponent, canActivate: [AuthenticationGuard], resolve: { post: SingleArticleResolver } },
   { path: 'articles/create',component: CreateArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details/:id/edit',component: EditArticleComponent, canActivate: [AuthenticationGuard] },
   { path: 'articles/details',component: ArticleListComponent, canActivate: [AuthenticationGuard] },

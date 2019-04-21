@@ -6,7 +6,7 @@
         <span class="fa fa-clock-o">{{commentInfo['_kmd']['ect'] | date: 'HH:mm'}}</span> &nbsp;
     </div>
     <div *ngIf="commentInfo['_kmd']['ect']!= commentInfo['_kmd']['lmt']">
-        <span class="fa fa-pencil">Modified by: {{commentInfo['author']}}</span> &nbsp;
+        <span class="fa fa-pencil">Modified by: {{commentInfo['modified']}}</span> &nbsp;
         <span class="fa fa-calendar">{{commentInfo['_kmd']['lmt'] | date: 'fullDate'}}</span>
         <span class="fa fa-clock-o">{{commentInfo['_kmd']['lmt'] | date: 'HH:mm'}}</span> &nbsp;
     </div>

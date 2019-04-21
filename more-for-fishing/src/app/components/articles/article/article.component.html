@@ -6,7 +6,7 @@
             <span class="fa fa-pencil">{{article.author}}</span>
          </div>
          <div *ngIf="article['_kmd']['ect']!= article['_kmd']['lmt']" class="mb-1 text-muted small">Modified by:
-            <span class="fa fa-pencil">{{article.author}}</span>
+            <span class="fa fa-pencil">{{article.modified}}</span>
          </div>
          <div *ngIf="article['_kmd']['ect']== article['_kmd']['lmt']" class="mb-1 text-muted small">Published:&nbsp;
             <span class="fa fa-calendar">{{article['_kmd']['ect'] | date: 'fullDate'}}</span> &nbsp;
