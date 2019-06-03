@@ -3,25 +3,25 @@ import { Guid } from "guid-typescript";
 
 export class RegistrationPage {
 
-    guid: Guid;
+    // guid: Guid;
     
-    constructor() {
-        this.guid = Guid.create();
-    }
+    // constructor() {
+    //     this.guid = Guid.create();
+    // }
 
-    private userNameText = 'E2e' + this.guid.toString();
+    private userNameText = 'E2e';
     private fullNameText = 'FirstName LastName';
-    private emailText = 'e2e' + this.guid.toString() +'@test.com';
+    private emailText = 'e2e' +'@test.com';
     private passWordText = 'test';
     private confirmPassWordText = 'test';
 
 
-    private userName: ElementFinder = element(by.xpath('//*[@formcontrolname="product"]'));
-    private fullName: ElementFinder = element(by.xpath('//*[@formcontrolname="product"]'));
-    private email: ElementFinder = element(by.xpath('//*[@formcontrolname="product"]'));
-    private passWord: ElementFinder = element(by.xpath('//*[@formcontrolname="product"]'));
-    private confirmPassWord: ElementFinder = element(by.xpath('//*[@formcontrolname="product"]'));
-    private registrationButton: ElementFinder = element(by.className('button'));
+    private userName: ElementFinder = element(by.xpath('//*[@formcontrolname="username"]'));
+    private fullName: ElementFinder = element(by.xpath('//*[@formcontrolname="fullname"]'));
+    private email: ElementFinder = element(by.xpath('//*[@formcontrolname="email"]'));
+    private passWord: ElementFinder = element(by.xpath('//*[@formcontrolname="password"]'));
+    private confirmPassWord: ElementFinder = element(by.xpath('//*[@formcontrolname="confirmPassword"]'));
+    private registrationButton: ElementFinder = element(by.id('registrationButton'));
 
     private validCredentias = {
         userName: this.userNameText,

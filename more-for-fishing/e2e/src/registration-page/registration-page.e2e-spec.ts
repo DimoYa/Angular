@@ -1,4 +1,5 @@
 import { RegistrationPage } from './registration-page.po';
+import { browser, logging } from 'protractor';
 
 describe('Form page section', () => {
   let regPage: RegistrationPage;
@@ -15,22 +16,18 @@ describe('Form page section', () => {
 
   });
 
-  // it('should send toast msg for successful registration', () => {
-  //   regPage.navigateToFormPage();
+  it('should send toast msg for successful registration', () => {
+    regPage.navigateToRegisterPage();
 
-  //   regPage.fillCredentials();
+    regPage.fillCredentials();
 
-  //   expect(regPage.returnsIfAddButtonIsEnabled()).toBe(true);
-  // });
+    expect(regPage.returnsIfRegistrationButtonIsEnabled()).toBe(true);
+  });
 
-//   it('should send an alert message for each field having invalid format in the form', () => {
-//     formPage.navigateToFormPage();
-
-//     formPage.fillCredentials(invalidCredentias);
-
-//     expect(formPage.getProductErrorMessage()).toEqual('This field is required!');
-//     expect(formPage.getEmailErrorMessage()).toEqual('Please enter a valid email!');
-//     expect(formPage.getPriceErrorMessage()).toEqual('This field is required!');
-//     expect(formPage.getExpiryDateErrorMessage()).toEqual('Please enter a valid date!');
-//   });
+  afterEach(async () => {
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    } as logging.Entry));
+  });
 });
