@@ -4,13 +4,6 @@ import { browser, logging } from 'protractor';
 describe('Form page section', () => {
   let regPage: RegistrationPage;
 
-  const invalidCredentias = {
-    product: '',
-    email: 'invalid',
-    price: 'invalid',
-    expiryDate: ''
-  };
-
   beforeEach(() => {
     regPage = new RegistrationPage();
 
@@ -20,8 +13,9 @@ describe('Form page section', () => {
     regPage.navigateToRegisterPage();
 
     regPage.fillCredentials();
+    regPage.clickSendButton(regPage.registrationButton);
 
-    expect(regPage.returnsIfRegistrationButtonIsEnabled()).toBe(true);
+    expect(regPage.geToastMessage()).toEqual('Register successfully');
   });
 
   afterEach(async () => {

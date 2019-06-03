@@ -1,17 +1,12 @@
-import { browser, by, element, Key, protractor, ElementFinder } from 'protractor';
-import { Guid } from "guid-typescript";
+import { browser, by, element, Key, protractor, ElementFinder, WebElement } from 'protractor';
+import * as moment from 'moment';
 
 export class RegistrationPage {
 
-    // guid: Guid;
-    
-    // constructor() {
-    //     this.guid = Guid.create();
-    // }
-
-    private userNameText = 'E2e';
+    private currentTime = moment().utc(true).format('YYYYMMDDmmss');
+    private userNameText = 'E2e' + this.currentTime;
     private fullNameText = 'FirstName LastName';
-    private emailText = 'e2e' +'@test.com';
+    private emailText = 'e2e@test.com';
     private passWordText = 'test';
     private confirmPassWordText = 'test';
 
@@ -21,7 +16,8 @@ export class RegistrationPage {
     private email: ElementFinder = element(by.xpath('//*[@formcontrolname="email"]'));
     private passWord: ElementFinder = element(by.xpath('//*[@formcontrolname="password"]'));
     private confirmPassWord: ElementFinder = element(by.xpath('//*[@formcontrolname="confirmPassword"]'));
-    private registrationButton: ElementFinder = element(by.id('registrationButton'));
+    private toastMsg = element(by.xpath('//*[@id="toast-container"]//div[contains(@role,"alertdialog")]'));
+    public registrationButton: ElementFinder = element(by.id('registrationButton'));
 
     private validCredentias = {
         userName: this.userNameText,
@@ -30,12 +26,17 @@ export class RegistrationPage {
         passWord: this.passWordText,
         confirmPassWord: this.confirmPassWordText
     };
-
+    
     private waitUntilReady = function (elm: ElementFinder) {
         browser.wait(function () {
             return elm.isPresent();
         }, 10000);
     };
+
+    geToastMessage() {
+        this.waitUntilReady(this.toastMsg);
+        return this.toastMsg.getText();
+    }
 
     navigateToRegisterPage() {
         return browser.get('register');
@@ -53,5 +54,9 @@ export class RegistrationPage {
     returnsIfRegistrationButtonIsEnabled() {
         this.waitUntilReady(this.registrationButton);
         return this.registrationButton.isEnabled();
+    }
+
+    clickSendButton(button: WebElement) {
+        button.click();
     }
 }
